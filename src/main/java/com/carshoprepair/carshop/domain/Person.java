@@ -19,8 +19,8 @@ public class Person {
     @Column(name = "lastname", length = MAX_NAME_LENGTH)
     private String lastName;
 
-    @Column(name = "Adress", length = MAX_NAME_LENGTH)
-    private String adress;
+    @Column(name = "Address", length = MAX_NAME_LENGTH)
+    private String address;
 
     @Column(name = "Email", length = MAX_NAME_LENGTH)
     private String email;
@@ -28,103 +28,117 @@ public class Person {
     @Column(name = "Password", length = MAX_NAME_LENGTH)
     private String password;
 
+    @Column(name="Plate")
+    private String plate;
+
+    @Column(name="Carmodel")
+    private String carModel;
+
     @Enumerated(EnumType.STRING)
     @Column(name = "Type", length = MAX_NAME_LENGTH)
     private TypeEnum type;
 
-    @Column(name = "Afm", length = MAX_NAME_LENGTH)
-    private String afm;
+    @Column(name = "Afm",unique = true,length = MAX_NAME_LENGTH)
+    private Long afm;
 
 
     @OneToMany(mappedBy = "person", targetEntity = Repair.class)
     private List<Repair> repairs;
+    public Person(){}
 
-    public Person(String firstName, String lastName, String adress, String email, String password, TypeEnum type, String afm, List<Repair> repairs) {
+    public Person(String firstName, String lastName, String address, String email, String password, String plate, String carModel, TypeEnum type, Long afm) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.adress = adress;
+        this.address = address;
         this.email = email;
         this.password = password;
+        this.plate = plate;
+        this.carModel = carModel;
         this.type = type;
         this.afm = afm;
-        this.repairs = repairs;
-    }
 
-    public static int getMaxNameLength() {
-        return MAX_NAME_LENGTH;
     }
 
     public Long getId() {
         return id;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public String getAdress() {
-        return adress;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public TypeEnum getType() {
-        return type;
-    }
-
-    public String getAfm() {
-        return afm;
-    }
-
-    public List<Repair> getRepairs() {
-        return repairs;
-    }
-
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getFirstName() {
+        return firstName;
     }
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
+    public String getLastName() {
+        return lastName;
+    }
+
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getPlate() {
+        return plate;
+    }
+
+    public void setPlate(String plate) {
+        this.plate = plate;
+    }
+
+    public String getCarModel() {
+        return carModel;
+    }
+
+    public void setCarModel(String carModel) {
+        this.carModel = carModel;
+    }
+
+    public TypeEnum getType() {
+        return type;
     }
 
     public void setType(TypeEnum type) {
         this.type = type;
     }
 
-    public void setAfm(String afm) {
+    public Long getAfm() {
+        return afm;
+    }
+
+    public void setAfm(Long afm) {
         this.afm = afm;
     }
 
-    public void setRepairs(List<Repair> repairs) {
-        this.repairs = repairs;
-    }
 
     @Override
     public String toString() {
@@ -132,7 +146,7 @@ public class Person {
         sb.append("id=").append(id);
         sb.append(", firstName='").append(firstName).append('\'');
         sb.append(", lastName='").append(lastName).append('\'');
-        sb.append(", adress='").append(adress).append('\'');
+        sb.append(", adress='").append(address).append('\'');
         sb.append(", email='").append(email).append('\'');
         sb.append(", type='").append(type).append('\'');
         sb.append(", afm='").append(afm).append('\'');

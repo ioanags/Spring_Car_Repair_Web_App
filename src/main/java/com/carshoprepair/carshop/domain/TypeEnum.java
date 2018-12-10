@@ -3,19 +3,18 @@ package com.carshoprepair.carshop.domain;
 
 
 public enum TypeEnum {
-    DEFAULT("User"),
-    ADMIN("Admin"),
-    USER("User");
+    Admin("Admin"),
+    User("User");
 
 
-    private String type;
+    private String userType;
 
-    TypeEnum(String type) {
-        this.type = type;
+    TypeEnum(String userType) {
+        this.userType = userType;
     }
 
-    public String getType() {
-        return type;
+    public String getUserType() {
+        return userType;
     }
 }
 
