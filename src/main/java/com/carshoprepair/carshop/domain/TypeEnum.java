@@ -3,9 +3,9 @@ package com.carshoprepair.carshop.domain;
 
 
 public enum TypeEnum {
-    DEFAULT("User"),
-    ADMIN("Admin"),
-    USER("User");
+    Default("User"),
+    Admin("Admin"),
+    User("User");
 
 
     private String type;

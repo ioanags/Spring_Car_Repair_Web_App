@@ -30,7 +30,7 @@ public class Person {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "Type", length = MAX_NAME_LENGTH)
-    private TypeEnum type;
+    private TypeEnum Type;
 
     @Column(name = "Afm", length = MAX_NAME_LENGTH)
     private String afm;
@@ -45,9 +45,12 @@ public class Person {
         this.adress = adress;
         this.email = email;
         this.password = password;
-        this.type = type;
+        this.Type = type;
         this.afm = afm;
         this.repairs = repairs;
+    }
+
+    public Person() {
     }
 
     public static int getMaxNameLength() {
@@ -79,7 +82,7 @@ public class Person {
     }
 
     public TypeEnum getType() {
-        return type;
+        return Type;
     }
 
     public String getAfm() {
@@ -115,7 +118,7 @@ public class Person {
     }
 
     public void setType(TypeEnum type) {
-        this.type = type;
+        this.Type = type;
     }
 
     public void setAfm(String afm) {
@@ -134,7 +137,7 @@ public class Person {
         sb.append(", lastName='").append(lastName).append('\'');
         sb.append(", adress='").append(adress).append('\'');
         sb.append(", email='").append(email).append('\'');
-        sb.append(", type='").append(type).append('\'');
+        sb.append(", type='").append(Type).append('\'');
         sb.append(", afm='").append(afm).append('\'');
         sb.append('}');
         return sb.toString();

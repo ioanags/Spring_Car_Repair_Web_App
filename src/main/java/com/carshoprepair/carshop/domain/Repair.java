@@ -36,6 +36,9 @@ public class Repair {
         this.person = person;
     }
 
+    public Repair() {
+    }
+
     public Long getId() {
         return id;
     }
@@ -86,7 +89,7 @@ public class Repair {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Author{");
+        final StringBuilder sb = new StringBuilder("Repair{");
         sb.append("id=").append(id);
         sb.append(", date='").append(date).append('\'');
         sb.append(", kind='").append(kind).append('\'');
