@@ -1,9 +1,3 @@
-INSERT INTO aek (firstname, lastname) VALUES ('Panos', 'Makris');
-INSERT INTO aek (firstname, lastname) VALUES ('John', 'Steinbeck');
-INSERT INTO aek (firstname, lastname) VALUES ('Alexandros', 'Papadiamantis');
-INSERT INTO aek (firstname, lastname) VALUES ('Nikos', 'Kazantzakis');
-INSERT INTO aek (firstname, lastname) VALUES ('Angelos', 'Terzakis');
-
 INSERT INTO Person (firstname, lastname,Adress,Email,Password,Type,Afm) VALUES ('Panos', 'Makris','28is oktobriou','panosmak37@gmail.com','pass1234','Admin','az224824');
 INSERT INTO Person (firstname, lastname,Adress,Email,Password,Type,Afm) VALUES ('Asterios', 'Haritos','Davaki 32','asterios@gmail.com','pass7894','User','au894562');
 
