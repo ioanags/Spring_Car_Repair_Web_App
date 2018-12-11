@@ -50,6 +50,16 @@ public class Person {
         this.repairs = repairs;
     }
 
+    public Person(String firstName, String lastName, String adress, String email, String password, TypeEnum type, String afm) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.adress = adress;
+        this.email = email;
+        this.password = password;
+        Type = type;
+        this.afm = afm;
+    }
+
     public Person() {
     }
 
