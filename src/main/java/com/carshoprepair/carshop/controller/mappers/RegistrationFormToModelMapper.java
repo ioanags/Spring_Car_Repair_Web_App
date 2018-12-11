@@ -5,9 +5,9 @@ import com.carshoprepair.carshop.models.PersonModel;
 import org.springframework.stereotype.Component;
 
 @Component
-public class RegisterFormToUserMapper {
+public class RegistrationFormToModelMapper {
 
-    public PersonModel mapToUserModel(RegisterForm registerForm) {
+    public PersonModel mapToPersonModel(RegisterForm registerForm) {
         PersonModel personModel = new PersonModel();
         personModel.setFirstName(registerForm.getFirstName());
         personModel.setLastName(registerForm.getLastName());
@@ -17,7 +17,6 @@ public class RegisterFormToUserMapper {
         personModel.setCarModel(registerForm.getCarModel());
         personModel.setPlate(registerForm.getPlate());
         personModel.setAfm(registerForm.getAfm());
-
         return personModel;
     }
 }

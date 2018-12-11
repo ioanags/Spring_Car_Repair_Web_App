@@ -1,5 +1,7 @@
 package com.carshoprepair.carshop.models;
 
+import com.carshoprepair.carshop.domain.TypeEnum;
+
 public class PersonModel {
     private String firstName;
     private String lastName;
@@ -9,13 +11,13 @@ public class PersonModel {
     private String address;
     private String carModel;
     private String plate;
-    private String type;
+    private TypeEnum type;
 
-    public String getType() {
+    public TypeEnum getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(TypeEnum type) {
         this.type = type;
     }
 
