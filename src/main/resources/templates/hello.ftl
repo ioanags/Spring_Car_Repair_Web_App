@@ -34,8 +34,14 @@
                 <ul class="nav flex-column">
                     <li class="nav-item">
                         <a class="nav-link active" href="#">
+                            <span data-feather="home"></span>
+                            Create user
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">
                             <span data-feather="plus-circle"></span>
-                            Create user<span class="sr-only">(current)</span>
+                            Create user
                         </a>
                     </li>
                     <li class="nav-item">
@@ -78,20 +84,28 @@
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>Header</th>
-                        <th>Header</th>
-                        <th>Header</th>
-                        <th>Header</th>
+                        <th>Name</th>
+                        <th>Surname</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th>Plates</th>
+
                     </tr>
                     </thead>
                     <tbody>
+                    <#list list as person>
                     <tr>
-                        <td>1,001</td>
-                        <td>Lorem</td>
-                        <td>ipsum</td>
-                        <td>dolor</td>
-                        <td>sit</td>
+
+                            <td>${person.id}</td>
+                            <td>${person.firstName}</td>
+                            <td>${person.lastName}</td>
+                            <td>${person.email}</td>
+                            <td>${person.address}</td>
+                            <td>${person.plate}</td>
+
+
                     </tr>
+                    </#list>
                     </tbody>
                 </table>
             </div>

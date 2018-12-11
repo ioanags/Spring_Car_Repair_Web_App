@@ -12,11 +12,16 @@ public class PersonServiceImpl implements PersonService {
     @Autowired
     private PersonJPARepository personJPARepository;
     @Override
-    public Optional<Person> getPersonById(long id) {
+    public Optional<Person> findPersonById(long id) {
        return personJPARepository.findPersonById(id);
     }
-    public Optional<Person> getPersonByEmail(String email){
+    @Override
+    public Optional<Person> findPersonByEmail(String email){
         return personJPARepository.findPersonByEmail(email);
+    }
+    @Override
+    public List<Person> findAll(){
+        return personJPARepository.findAll();
     }
 
     @Override

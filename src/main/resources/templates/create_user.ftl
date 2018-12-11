@@ -18,7 +18,7 @@
 
 <body>
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Hello ${name} ${surname} </a>
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Hello</a>
    <!-- <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"> -->
     <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
@@ -33,9 +33,15 @@
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">
+                        <a class="nav-link active" href="http://localhost:8081/admin">
                             <span data-feather="plus-circle"></span>
-                            Create user<span class="sr-only">(current)</span>
+                            Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="http://localhost:8081/">
+                            <span data-feather="plus-circle"></span>
+                            Create user
                         </a>
                     </li>
                     <li class="nav-item">
@@ -48,6 +54,12 @@
                         <a class="nav-link" href="#">
                             <span data-feather="search"></span>
                             Search
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">
+                            <span data-feather="plus-circle"></span>
+                            Delete
                         </a>
                     </li>
 
@@ -65,37 +77,45 @@
 
 
             <div class="container">
-                <form>
+                <form action="" name="registerForm" method="POST">
                     <div class="form-group w-50">
+                        <@spring.bind "registerForm.firstName"/>
                         <label for="first-name"><strong>First Name:</strong></label>
                         <input type="text" class="form-control" id="first-name" placeholder="Enter Your Name">
                     </div>
                     <div class="form-group w-50">
+                        <@spring.bind "registerForm.lastName"/>
                         <label for="last-name"><strong>Last Name:</strong></label>
                         <input type="text" class="form-control" id="last-name" placeholder="Enter Your Last Name">
                     </div>
                     <div class="form-group w-50">
+                        <@spring.bind "registerForm.email"/>
                         <label for="email"><strong>Email:</strong></label>
                         <input type="email" class="form-control" id="email" placeholder="Enter Your Email">
                     </div>
                     <div class="form-group w-50">
+                        <@spring.bind "registerForm.password"/>
                         <label for="password"><strong>Password:</strong></label>
                         <input type="password" class="form-control" id="password" placeholder="Enter Your Password">
                     </div>
 
                     <div class="form-group w-50">
+                        <@spring.bind "registerForm.Address"/>
                         <label for="address"><strong>Address</strong></label>
                         <input type="text" class="form-control" id="address" placeholder="Address">
                     </div>
                     <div class="form-group w-50">
+                        <@spring.bind "registerForm.afm"/>
                         <label for="afm"><strong>ΑΦΜ</strong></label>
                         <input type="text" class="form-control" id="afm" placeholder="ΑΦΜ">
                     </div>
                     <div class="form-check form-check-inline">
+                        <@spring.bind "registerForm.type"/>
                         <input class="form-check-input" type="radio" name="type" id="user" value="user">
                         <label class="form-check-label" for="user">User</label>
                     </div>
                     <div class="form-check form-check-inline">
+                        <@spring.bind "registerForm.type"/>
                         <input class="form-check-input" type="radio" name="type" id="admin" value="admin">
                         <label class="form-check-label" for="admin">Admin</label>
                     </div>

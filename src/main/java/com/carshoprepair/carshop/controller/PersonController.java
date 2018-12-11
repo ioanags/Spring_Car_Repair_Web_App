@@ -1,7 +1,6 @@
 package com.carshoprepair.carshop.controller;
 
 import com.carshoprepair.carshop.domain.Person;
-import com.carshoprepair.carshop.domain.Repair;
 import com.carshoprepair.carshop.service.PersonServiceImpl;
 import com.carshoprepair.carshop.service.RepairServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,18 +16,22 @@ import java.util.Optional;
 public class PersonController {
     @Autowired
     private PersonServiceImpl personService;
+
     @Autowired
     private RepairServiceImpl repairService;
     @GetMapping("/admin")
+
     public String index() {
-        return "admin_form";
+        return "login";
     }
     @GetMapping("/hello")
 
     public String hello(Model model, @RequestParam(value = "id") long id) {
-       Optional<Person> user = personService.getPersonById(id);
+       Optional<Person> user = personService.findPersonById(id);
             user.ifPresent(person ->model.addAttribute("name",person.getFirstName()));
             user.ifPresent(person ->model.addAttribute("surname",person.getLastName()));
+            List<Person> person = personService.findAll();
+            model.addAttribute("list",person);
             return "hello";
 
     }

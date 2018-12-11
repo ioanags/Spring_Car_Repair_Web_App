@@ -1,5 +1,6 @@
 package com.carshoprepair.carshop.service;
 
+import com.carshoprepair.carshop.domain.Person;
 import com.carshoprepair.carshop.domain.Repair;
 import com.carshoprepair.carshop.repository.RepairJPARepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,7 @@ public class RepairServiceImpl implements RepairService {
     private RepairJPARepository repairJPARepository;
 
     @Override
-    public List<Repair> getRepairByPerson(long id) {
-        return repairJPARepository.findRepairByPerson(id);
+    public List<Repair> getRepairByPerson(Person person) {
+        return repairJPARepository.findRepairByPerson(person);
     }
 }
