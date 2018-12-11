@@ -37,7 +37,8 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public PersonModel create(PersonModel personModel) {
-        Person person = new Person(personModel.getFirstName(),
+        Person person = new Person(
+                personModel.getFirstName(),
                 personModel.getLastName(),
                 personModel.getAddress(),
                 personModel.getEmail(),

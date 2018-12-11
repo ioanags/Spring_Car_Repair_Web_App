@@ -22,6 +22,7 @@ public class PersonController {
     @GetMapping("/admin")
 
     public String index() {
+
         return "login";
     }
     @GetMapping("/hello")
