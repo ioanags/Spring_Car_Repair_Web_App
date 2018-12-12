@@ -22,7 +22,7 @@ public class Person {
     @Column(name = "Address", length = MAX_NAME_LENGTH)
     private String address;
 
-    @Column(name = "Email", length = MAX_NAME_LENGTH)
+    @Column(name = "Email",unique = true, length = MAX_NAME_LENGTH)
     private String email;
 
     @Column(name = "Password", length = MAX_NAME_LENGTH)
