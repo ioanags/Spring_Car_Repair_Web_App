@@ -50,4 +50,13 @@ public class PersonServiceImpl implements PersonService {
         Person savedPerson= personJPARepository.save(person);
         return personModelMapper.mapToPersonModel(savedPerson);
     }
+
+    @Override
+    public Optional<Person> findPersonByEmailAndPassword(String email,String password){
+        return personJPARepository.findPersonByEmailAndPassword(email,password);
+    }
+
+
+
+
 }

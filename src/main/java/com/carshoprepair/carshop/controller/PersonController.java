@@ -19,14 +19,8 @@ public class PersonController {
 
     @Autowired
     private RepairServiceImpl repairService;
-    @GetMapping("/admin")
 
-    public String index() {
-
-        return "login";
-    }
     @GetMapping("/hello")
-
     public String hello(Model model, @RequestParam(value = "id") long id) {
        Optional<Person> user = personService.findPersonById(id);
             user.ifPresent(person ->model.addAttribute("name",person.getFirstName()));

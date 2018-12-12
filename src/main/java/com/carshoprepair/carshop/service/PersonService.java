@@ -11,6 +11,9 @@ public interface PersonService {
     List<Person> findAll();
     Optional<Person> findPersonByEmail(String email);
     Optional<Person> findPersonByType(String type);
+    Optional<Person> findPersonByEmailAndPassword(String email, String password);
 
     PersonModel create(PersonModel person);
+
+
 }

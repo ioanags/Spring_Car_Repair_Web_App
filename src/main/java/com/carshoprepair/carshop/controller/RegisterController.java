@@ -59,7 +59,12 @@ public class RegisterController {
 //        }
         PersonModel personModel = mapper.mapToPersonModel(registerForm);
         personServiceImpl.create(personModel);
-        return "redirect:/admin";
+        return "redirect:/success";
+    }
+
+    @GetMapping("/success")
+    public String success(){
+        return "Success";
     }
 
 }
