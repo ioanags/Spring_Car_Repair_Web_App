@@ -9,14 +9,14 @@ public class Person {
     private static final int MAX_NAME_LENGTH  = 60;
 
     @Id
-    @Column(name = "person_id", nullable = false)
+    @Column(name = "Person_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "firstname", length = MAX_NAME_LENGTH)
+    @Column(name = "FirstName", length = MAX_NAME_LENGTH)
     private String firstName;
 
-    @Column(name = "lastname", length = MAX_NAME_LENGTH)
+    @Column(name = "LastName", length = MAX_NAME_LENGTH)
     private String lastName;
 
     @Column(name = "Address", length = MAX_NAME_LENGTH)

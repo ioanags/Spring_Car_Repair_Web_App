@@ -17,6 +17,7 @@ public class RegistrationFormToModelMapper {
         personModel.setCarModel(registerForm.getCarModel());
         personModel.setPlate(registerForm.getPlate());
         personModel.setAfm(registerForm.getAfm());
+        personModel.setType(registerForm.getType());
         return personModel;
     }
 }
