@@ -16,6 +16,7 @@ public class PersonToPersonModelMapper {
         personModel.setCarModel(person.getCarModel());
         personModel.setPlate(person.getPlate());
         personModel.setAfm(person.getAfm());
+        personModel.setType(person.getType());
         return personModel;
     }
 }

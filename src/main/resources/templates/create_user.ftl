@@ -82,51 +82,81 @@
                         <@spring.bind "registerForm.firstName"/>
                         <label for="first-name"><strong>First Name:</strong></label>
                         <input  name="firstName" type="text" class="form-control" id="first-name" placeholder="Enter Your Name">
+                        <#list spring.status.errorMessages as error>
+                            <span>${error}</span>
+                        </#list>
                     </div>
                     <div class="form-group w-50">
                         <@spring.bind "registerForm.lastName"/>
                         <label for="last-name"><strong>Last Name:</strong></label>
                         <input name="lastName" type="text" class="form-control" id="last-name" placeholder="Enter Your Last Name">
+                        <#list spring.status.errorMessages as error>
+                            <span>${error}</span>
+                        </#list>
                     </div>
                     <div class="form-group w-50">
                         <@spring.bind "registerForm.email"/>
                         <label for="email"><strong>Email:</strong></label>
                         <input name="email" type="email" class="form-control" id="email" placeholder="Enter Your Email">
+                        <#list spring.status.errorMessages as error>
+                            <span>${error}</span>
+                        </#list>
                     </div>
                     <div class="form-group w-50">
                         <@spring.bind "registerForm.password"/>
                         <label for="password"><strong>Password:</strong></label>
                         <input name="password" type="password" class="form-control" id="password" placeholder="Enter Your Password">
+                        <#list spring.status.errorMessages as error>
+                            <span>${error}</span>
+                        </#list>
                     </div>
 
                     <div class="form-group w-50">
                         <@spring.bind "registerForm.Address"/>
                         <label for="address"><strong>Address:</strong></label>
-                        <input name="address" type="text" class="form-control" id="address" placeholder="Address">
+                        <input name="Address" type="text" class="form-control" id="address" placeholder="Address">
+                        <#list spring.status.errorMessages as error>
+                            <span>${error}</span>
+                        </#list>
                     </div>
                     <div class="form-group w-50">
                         <@spring.bind "registerForm.afm"/>
                         <label for="afm"><strong>ΑΦΜ:</strong></label>
-                        <input name="afm" type="text" class="form-control" id="afm" placeholder="ΑΦΜ">
+                        <input name="Afm" type="text" class="form-control" id="afm" placeholder="ΑΦΜ">
+                        <#list spring.status.errorMessages as error>
+                            <span>${error}</span>
+                        </#list>
                     </div>
                     <div class="form-group w-50">
                         <@spring.bind "registerForm.plate"/>
                         <label for="plate"><strong>Plate:</strong></label>
                         <input name="plate" type="text" class="form-control" id="plate" placeholder="Enter Your Plate">
+                        <#list spring.status.errorMessages as error>
+                            <span>${error}</span>
+                        </#list>
                     </div>
                     <div class="form-group w-50">
-                        <@spring.bind "registerForm.email"/>
+
                         <label for="carModel"><strong>Car Model:</strong></label>
                         <input name="carModel" type="text" class="form-control" id="carModel" placeholder="Enter Your Car Model">
+                        <#list spring.status.errorMessages as error>
+                            <span>${error}</span>
+                        </#list>
                     </div>
                     <div class="form-check form-check-inline">
                         <@spring.bind "registerForm.type"/>
-                        <input class="form-check-input" type="radio" name="type" id="user" value="user">
+                        <input class="form-check-input" type="radio" name="type" id="user" value="User">
+                        <#list spring.status.errorMessages as error>
+                            <span>${error}</span>
+                        </#list>
                         <label class="form-check-label" for="user">User</label>
                     </div>
                     <div class="form-check form-check-inline">
                         <@spring.bind "registerForm.type"/>
-                        <input class="form-check-input" type="radio" name="type" id="user" value="admin">
+                        <input class="form-check-input" type="radio" name="type" id="user" value="Admin">
+                        <#list spring.status.errorMessages as error>
+                            <span>${error}</span>
+                        </#list>
                         <label class="form-check-label" for="user">Admin</label>
                     </div>
                     <button type="submit" class="btn btn-primary clearfix">Add</button>
