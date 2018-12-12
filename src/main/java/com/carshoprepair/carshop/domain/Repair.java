@@ -23,17 +23,20 @@ public class Repair {
 
     @Column(name = "Description", nullable = false)
     private String description;
+    @Column(name ="Status", nullable = false)
+    private String status;
 
     @ManyToOne(optional = false, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "person_id")
     private Person person;
 
-    public Repair(Date date, String kind, Long cost, String description, Person person) {
+    public Repair(Date date, String kind, Long cost, String description, Person person,String status) {
         this.date = date;
         this.kind = kind;
         this.cost = cost;
         this.description = description;
         this.person = person;
+        this.status=status;
     }
 
     public Long getId() {
@@ -50,6 +53,10 @@ public class Repair {
 
     public Long getCost() {
         return cost;
+    }
+
+    public String getStatus() {
+        return status;
     }
 
     public String getDescription() {
@@ -74,6 +81,9 @@ public class Repair {
 
     public void setCost(Long cost) {
         this.cost = cost;
+    }
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public void setDescription(String description) {

@@ -52,11 +52,11 @@ public class RegisterController {
                                    RegisterForm registerForm,
                            BindingResult bindingResult) {
 
-//        if (bindingResult.hasErrors()) {
-//            //have some error handling here, perhaps add extra error messages to the model
-//            model.addAttribute(ERROR_MESSAGE, "an error occurred");
-//            return "create_user";
-//        }
+       if (bindingResult.hasErrors()) {
+            //have some error handling here, perhaps add extra error messages to the model
+            model.addAttribute(ERROR_MESSAGE, "an error occurred");
+            return "create_user";
+        }
         PersonModel personModel = mapper.mapToPersonModel(registerForm);
         personServiceImpl.create(personModel);
         return "redirect:/success";

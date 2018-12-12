@@ -19,6 +19,12 @@
 <body>
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
     <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Hello</a>
+    <form action="/search" class="navbar-form navbar-right form-inline" id="search">
+        <div class="form-group">
+            <input class="form-control" id="searchID" name="searchAfm" placeholder="ΑΦΜ" type="text">
+        </div>
+        <button class="btn btn-default" type="submit">Search</button>
+    </form>
    <!-- <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"> -->
     <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
@@ -39,29 +45,12 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="http://localhost:8081/">
+                        <a class="nav-link active" href="http://localhost:8081/register">
                             <span data-feather="plus-circle"></span>
                             Create user
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">
-                            <span data-feather="edit"></span>
-                            Edit user
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">
-                            <span data-feather="search"></span>
-                            Search
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">
-                            <span data-feather="plus-circle"></span>
-                            Delete
-                        </a>
-                    </li>
+
 
                 </ul>
             </div>
@@ -92,6 +81,9 @@
                         <@spring.bind "registerForm.email"/>
                         <label for="email"><strong>Email:</strong></label>
                         <input name="email" type="email" class="form-control" id="email" placeholder="Enter Your Email">
+                        <#list spring.status.errorMessages as error>
+                            <span>${error}</span>
+                        </#list>
                     </div>
                     <div class="form-group w-50">
                         <@spring.bind "registerForm.password"/>

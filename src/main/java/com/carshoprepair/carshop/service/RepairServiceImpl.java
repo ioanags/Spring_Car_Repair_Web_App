@@ -13,7 +13,8 @@ public class RepairServiceImpl implements RepairService {
     private RepairJPARepository repairJPARepository;
 
     @Override
-    public List<Repair> getRepairByPerson(Person person) {
+    public List<Repair> findRepairByPerson(Person person) {
+
         return repairJPARepository.findRepairByPerson(person);
     }
 }

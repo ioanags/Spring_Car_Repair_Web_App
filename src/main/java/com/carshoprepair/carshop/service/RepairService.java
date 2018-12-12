@@ -6,5 +6,5 @@ import com.carshoprepair.carshop.domain.Repair;
 import java.util.List;
 
 public interface RepairService  {
-    List<Repair> getRepairByPerson(Person person);
+    List<Repair> findRepairByPerson(Person person);
 }
