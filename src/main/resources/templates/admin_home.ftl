@@ -63,7 +63,7 @@
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Dashboard</h1>
+                <h1 class="h2">Repair List</h1>
                <!-- <div class="btn-toolbar mb-2 mb-md-0">
                     <div class="btn-group mr-2">
                         <button class="btn btn-sm btn-outline-secondary">Share</button>
@@ -78,17 +78,17 @@
 
 
 
-            <h2>10 Upcoming Repairs</h2>
+            <h2>10 First Repairs</h2>
             <div class="table-responsive">
                 <table class="table table-striped table-sm">
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>Name</th>
-                        <th>Surname</th>
-                        <th>Email</th>
-                        <th>Address</th>
-                        <th>Plates</th>
+                        <th>Date</th>
+                        <th>Kind</th>
+                        <th>Cost</th>
+                        <th>Status</th>
+
 
                     </tr>
                     </thead>
@@ -97,12 +97,19 @@
                     <#list list as person>
                     <tr>
                             <td>${person.id}</td>
-                            <td>${person.firstName}</td>
-                            <td>${person.lastName}</td>
-                            <td>${person.email}</td>
-                            <td>${person.address}</td>
-                            <td>${person.plate}</td>
-                    </tr>
+                            <td>${person.date}</td>
+                            <td>${person.kind}</td>
+                            <td>${person.cost}</td>
+                            <td>${person.status}</td>
+
+                        <td>
+                            <button class="btn btn-success" type="submit" value="Save Changes">Save Changes</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-danger button-delete-confirmation" type="submit" value="Delete">Delete</button>
+                        </td>
+                        </tr>
+
                     </#list>
 
                     </tbody>

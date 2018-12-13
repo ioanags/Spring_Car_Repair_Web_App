@@ -17,4 +17,7 @@ public class RepairServiceImpl implements RepairService {
 
         return repairJPARepository.findRepairByPerson(person);
     }
+
+    @Override
+    public List<Repair> findAll(){return repairJPARepository.findAll();}
 }

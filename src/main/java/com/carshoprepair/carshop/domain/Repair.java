@@ -39,6 +39,9 @@ public class Repair {
         this.status=status;
     }
 
+    public Repair() {
+    }
+
     public Long getId() {
         return id;
     }

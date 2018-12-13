@@ -2,6 +2,7 @@ package com.carshoprepair.carshop.controller;
 
 import com.carshoprepair.carshop.controller.mappers.SearchFormToModelMapper;
 import com.carshoprepair.carshop.domain.Person;
+import com.carshoprepair.carshop.domain.Repair;
 import com.carshoprepair.carshop.form.SearchForm;
 import com.carshoprepair.carshop.models.PersonModel;
 import com.carshoprepair.carshop.service.PersonServiceImpl;
@@ -32,12 +33,10 @@ public class PersonController {
 
 
     @GetMapping("/admin")
-    public String hello(Model model, @RequestParam(value = "id") long id) {
-       Optional<Person> user = personService.findPersonById(id);
-            user.ifPresent(person ->model.addAttribute("name",person.getFirstName()));
-            user.ifPresent(person ->model.addAttribute("surname",person.getLastName()));
+    public String hello(Model model) {
+            List<Repair> repair = repairService.findAll();
             List<Person> person = personService.findAll();
-            model.addAttribute("list",person);
+            model.addAttribute("list",repair);
             return "admin_home";
 
     }

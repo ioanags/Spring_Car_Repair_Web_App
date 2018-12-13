@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface RepairService  {
     List<Repair> findRepairByPerson(Person person);
+    List<Repair> findAll();
 }
