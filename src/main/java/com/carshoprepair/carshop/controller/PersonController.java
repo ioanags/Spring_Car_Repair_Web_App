@@ -41,6 +41,13 @@ public class PersonController {
 
     }
 
+    @GetMapping("/admin/users")
+    public String admin_users(Model model){
+        List<Person> person = personService.findAll();
+        model.addAttribute("list",person);
+        return "admin_user";
+    }
+
 
 
 
