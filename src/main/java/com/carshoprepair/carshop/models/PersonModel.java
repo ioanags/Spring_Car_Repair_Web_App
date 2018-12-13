@@ -13,7 +13,7 @@ public class PersonModel {
     private String plate;
     private TypeEnum type;
 
-
+ public PersonModel(){}
     public TypeEnum getType() {
         return type;
     }

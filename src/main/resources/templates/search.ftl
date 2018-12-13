@@ -22,7 +22,7 @@
 <body>
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
     <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Hello</a>
-    <form action="/search" name="searchForm" class="navbar-form navbar-right form-inline" id="search" method="POST">
+    <form action="/search" name="searchForm" class="navbar-form navbar-right form-inline" id="search" method="GET">
         <div class="form-group">
             <input class="form-control" id="searchID" name="afm" placeholder="ΑΦΜ" type="text">
             <div class="form-group">
@@ -64,21 +64,11 @@
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 class="h2">Dashboard</h1>
-               <!-- <div class="btn-toolbar mb-2 mb-md-0">
-                    <div class="btn-group mr-2">
-                        <button class="btn btn-sm btn-outline-secondary">Share</button>
-                        <button class="btn btn-sm btn-outline-secondary">Export</button>
-                    </div>
-                    <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
-                        <span data-feather="calendar"></span>
-                        This week
-                    </button>
-                </div> -->
             </div>
 
 
 
-            <h2>10 Upcoming Repairs</h2>
+            <h2>Search Results</h2>
             <div class="table-responsive">
                 <table class="table table-striped table-sm">
                     <thead>
@@ -94,14 +84,14 @@
                     </thead>
                     <tbody>
 
-                    <#list list as person>
+                    <#list list as searchResult>
                     <tr>
-                            <td>${person.id}</td>
-                            <td>${person.firstName}</td>
-                            <td>${person.lastName}</td>
-                            <td>${person.email}</td>
-                            <td>${person.address}</td>
-                            <td>${person.plate}</td>
+                            <td>${searchResult.id}</td>
+                            <td>${searchResult.firstName}</td>
+                            <td>${searchResult.lastName}</td>
+                            <td>${searchResult.email}</td>
+                            <td>${searchResult.address}</td>
+                            <td>${searchResult.plate}</td>
                     </tr>
                     </#list>
 
@@ -123,36 +113,6 @@
     feather.replace()
 </script>
 
-<!-- Graphs -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
-<script>
-    var ctx = document.getElementById("myChart");
-    var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-            datasets: [{
-                data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
-                lineTension: 0,
-                backgroundColor: 'transparent',
-                borderColor: '#007bff',
-                borderWidth: 4,
-                pointBackgroundColor: '#007bff'
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: false
-                    }
-                }]
-            },
-            legend: {
-                display: false,
-            }
-        }
-    });
-</script>
+
 </body>
 </html>

@@ -1,25 +1,22 @@
 package com.carshoprepair.carshop.form;
 
-public class LoginForm {
-
+public class SearchForm {
+    private long afm;
     private String email;
-    private String password;
 
     public String getEmail() {
         return email;
     }
 
-    public String getPassword() {
-        return password;
+    public long getAfm() {
+        return afm;
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setAfm(long afm) {
+        this.afm = afm;
     }
-
-
 }

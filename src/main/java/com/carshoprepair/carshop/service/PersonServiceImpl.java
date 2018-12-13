@@ -1,6 +1,7 @@
 package com.carshoprepair.carshop.service;
 
 import com.carshoprepair.carshop.controller.mappers.PersonToPersonModelMapper;
+import com.carshoprepair.carshop.controller.mappers.SearchFormToModelMapper;
 import com.carshoprepair.carshop.domain.Person;
 import com.carshoprepair.carshop.models.PersonModel;
 import com.carshoprepair.carshop.repository.PersonJPARepository;
@@ -15,6 +16,8 @@ public class PersonServiceImpl implements PersonService {
     private PersonJPARepository personJPARepository;
     @Autowired
     private PersonToPersonModelMapper personModelMapper;
+    @Autowired
+    private SearchFormToModelMapper searchModelMapper;
 
     @Override
     public Optional<Person> findPersonById(long id) {
@@ -54,6 +57,11 @@ public class PersonServiceImpl implements PersonService {
     @Override
     public Optional<Person> findPersonByEmailAndPassword(String email,String password){
         return personJPARepository.findPersonByEmailAndPassword(email,password);
+    }
+
+
+    public List<Person> findPersonByAfmAndEmail(long afm, String email){
+        return personJPARepository.findPersonByAfmAndEmail(afm,email);
     }
 
 
