@@ -24,7 +24,7 @@ import java.util.Optional;
 import static com.carshoprepair.carshop.utils.GlobalAttributes.ERROR_MESSAGE;
 
 @Controller
-public class PersonController {
+public class AdminController {
     @Autowired
     private PersonServiceImpl personService;
 
@@ -45,7 +45,7 @@ public class PersonController {
     public String admin_users(Model model){
         List<Person> person = personService.findAll();
         model.addAttribute("list",person);
-        return "admin_user";
+        return "admin_user_list";
     }
 
 

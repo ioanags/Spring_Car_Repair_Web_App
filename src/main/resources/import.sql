@@ -3,6 +3,6 @@ INSERT INTO Person (firstname, lastname,Address,Email,Password,Plate,Carmodel,Ty
 INSERT INTO Person (firstname, lastname,Address,Email,Password,Plate,Carmodel,Type,Afm) VALUES ('Asterios', 'Haritos','Davaki 32','asterios@gmail.com','pass7894','AVC-1234','Toyota','User','894562');
 
 INSERT INTO Repairs (Date, Kind,Cost,Description,person_id,Status) VALUES ('2019-05-01', 'Small','150','A lot of work','1','Append');
-INSERT INTO Repairs (Date, Kind,Cost,Description,person_id,Status) VALUES ('201-12-25', 'Small','400','They were eaten','2','Append');
+INSERT INTO Repairs (Date, Kind,Cost,Description,person_id,Status) VALUES ('2019-12-25', 'Small','400','They were eaten','2','Append');
 INSERT INTO Repairs (Date, Kind,Cost,Description,person_id,Status) VALUES ('2020-10-09', 'Big','200','A lot of work','1','Ready');
 

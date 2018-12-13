@@ -56,6 +56,12 @@
                             Create user
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="http://localhost:8081/admin/users">
+                            <span data-feather="list"></span>
+                            Users List
+                        </a>
+                    </li>
 
                 </ul>
             </div>
@@ -79,6 +85,8 @@
                         <th>Email</th>
                         <th>Address</th>
                         <th>Plates</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
 
                     </tr>
                     </thead>
@@ -92,6 +100,13 @@
                             <td>${searchResult.email}</td>
                             <td>${searchResult.address}</td>
                             <td>${searchResult.plate}</td>
+                        <td>
+                            <button class="btn btn-success" name="edit" type="submit" value="Edit">Edit</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-danger button-delete-confirmation" name="Delete" type="submit" value="Delete">Delete</button>
+                        </td>
+
                     </tr>
                     </#list>
 
