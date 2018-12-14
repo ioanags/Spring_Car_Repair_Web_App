@@ -35,7 +35,7 @@ public class SearchController {
 //        }
 
         PersonModel searchModel = searchFormToModelMapper.mapSearchToPersonModel(searchForm);
-        List<Person> person = personService.findPersonByAfmAndEmail(searchModel.getAfm(), searchModel.getEmail());
+        List<Person> person = personService.searchByAfmOrEmail(searchModel.getAfm(), searchModel.getEmail());
         model.addAttribute("list",person);
         return "search";
 

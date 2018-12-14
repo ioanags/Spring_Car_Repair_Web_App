@@ -28,7 +28,7 @@
             <div class="form-group">
                 <input class="form-control" id="searchID" name="afm" placeholder="ΑΦΜ" type="text">
             </div>
-                <div class="form-group">
+              <div class="form-group">
                     <input class="form-control" id="searchID" name="email" placeholder="Email" type="text">
                 </div>
 
