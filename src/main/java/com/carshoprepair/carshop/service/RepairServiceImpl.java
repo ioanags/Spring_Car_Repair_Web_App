@@ -6,6 +6,7 @@ import com.carshoprepair.carshop.repository.RepairJPARepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 @Service
 public class RepairServiceImpl implements RepairService {
@@ -20,4 +21,10 @@ public class RepairServiceImpl implements RepairService {
 
     @Override
     public List<Repair> findAll(){return repairJPARepository.findAll();}
+
+    @Override
+    public List<Repair> recentRepairs() {return repairJPARepository.findTop10ByOrderByDateAsc();}
+
+
+
 }
