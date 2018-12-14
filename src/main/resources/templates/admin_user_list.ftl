@@ -57,9 +57,9 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="http://localhost:8081/admin/users">
+                        <a class="nav-link active" href="http://localhost:8081/admin">
                             <span data-feather="list"></span>
-                            Users List
+                            Repair List
                         </a>
                     </li>
 

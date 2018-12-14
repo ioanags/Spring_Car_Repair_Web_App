@@ -34,7 +34,7 @@ public class AdminController {
 
     @GetMapping("/admin")
     public String hello(Model model) {
-            List<Repair> repair = repairService.findAll();
+            List<Repair> repair = repairService.recentRepairs();
             List<Person> person = personService.findAll();
             model.addAttribute("list",repair);
             return "admin_home";
