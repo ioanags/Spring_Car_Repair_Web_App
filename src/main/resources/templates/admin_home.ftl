@@ -115,7 +115,7 @@
                             <td>${person.status}</td>
 
                         <td>
-                            <button class="btn btn-success" type="submit" name="edit" value="Edit">Edit</button>
+                            <a class="btn btn-success" href="/admin/edit_user/${person.id}" name="edit" >Edit</a>
                         </td>
                         <td>
                             <button class="btn btn-danger button-delete-confirmation" name="delete" type="submit" value="Delete">Delete</button>

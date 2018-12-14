@@ -12,10 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -46,6 +43,22 @@ public class AdminController {
         List<Person> person = personService.findAll();
         model.addAttribute("list",person);
         return "admin_user_list";
+    }
+
+    @RequestMapping("admin/edit_user/{id}")
+    public String edit(@PathVariable("id") long id,Model model){
+        Optional<Person> person = personService.editPersonById(id);
+        model.addAttribute("name",person.get().getFirstName());
+        model.addAttribute("lastName",person.get().getLastName());
+        model.addAttribute("email",person.get().getEmail());
+        model.addAttribute("password",person.get().getPassword());
+        model.addAttribute("address",person.get().getAddress());
+        model.addAttribute("afm",person.get().getAfm());
+        model.addAttribute("carModel",person.get().getCarModel());
+        model.addAttribute("plate",person.get().getPlate());
+        model.addAttribute("type",person.get().getType());
+
+        return "edit_user";
     }
 
 
