@@ -23,19 +23,13 @@ public class PersonServiceImpl implements PersonService {
     public Optional<Person> findPersonById(long id) {
        return personJPARepository.findPersonById(id);
     }
-    @Override
-    public Optional<Person> findPersonByEmail(String email){
-        return personJPARepository.findPersonByEmail(email);
-    }
+
     @Override
     public List<Person> findAll(){
         return personJPARepository.findAll();
     }
 
-    @Override
-    public Optional<Person> findPersonByType(String type) {
-        return Optional.empty();
-    }
+
 
 
     @Override
@@ -60,8 +54,8 @@ public class PersonServiceImpl implements PersonService {
     }
 
 
-    public List<Person> findPersonByAfmAndEmail(long afm, String email){
-        return personJPARepository.findPersonByAfmAndEmail(afm,email);
+    public List<Person> searchByAfmOrEmail(long afm, String email){
+        return personJPARepository.findPersonByAfmOrEmail(afm,email);
     }
 
 
