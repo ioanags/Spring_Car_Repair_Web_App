@@ -19,10 +19,7 @@ public class PersonServiceImpl implements PersonService {
     @Autowired
     private SearchFormToModelMapper searchModelMapper;
 
-//    @Override
-//    public Optional<Person> editPersonById(long id) {
-//       return personJPARepository.findPersonById(id);
-//    }
+
 
     @Override
     public List<Person> findAll(){
@@ -61,6 +58,10 @@ public class PersonServiceImpl implements PersonService {
     @Override
     public Optional<Person> editPersonById(long id){
         return personJPARepository.findPersonById(id);
+    }
+
+    public void delete(Long id){
+        personJPARepository.deleteById(id);
     }
 
 

@@ -26,5 +26,11 @@ public class RepairServiceImpl implements RepairService {
     public List<Repair> recentRepairs() {return repairJPARepository.findTop10ByOrderByDateAsc();}
 
 
+    public void delete(Long id){
+        repairJPARepository.deleteById(id);
+    }
+
+
+
 
 }

@@ -121,18 +121,24 @@
                         <td>${person.type}</td>
                         <td>${person.afm}</td>
 
+                    <td>
+                        <button class="btn btn-success" type="submit" value="Save Changes">Edit</button>
+                    </td>
                         <td>
-                            <button class="btn btn-success" type="submit" name="edit" value="Edit">Edit</button>
+                        <form action="/admin/delete_user" name="deleteForm" method="GET">
+                    <input type="hidden" name="id" value="${person.id}" />
+                    <button class="btn btn-danger button-delete-confirmation" type="submit" name="action" value="Delete">Delete</button>
+                        </form>
                         </td>
-                        <td>
-                            <button class="btn btn-danger button-delete-confirmation" name="delete" type="submit" value="Delete">Delete</button>
-                        </td>
+
                         </tr>
-
                     </#list>
-
                     </tbody>
                 </table>
+                <a class="nav-link active" href="http://localhost:8081/register">
+                    <span data-feather="plus-circle"></span>
+                    Create user
+                </a>
             </div>
         </main>
     </div>

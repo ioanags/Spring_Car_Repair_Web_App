@@ -98,6 +98,7 @@
                         <th>Kind</th>
                         <th>Cost</th>
                         <th>Status</th>
+                        <th>Name</th>
                         <th>Edit</th>
                         <th>Delete</th>
 
@@ -106,6 +107,8 @@
                     </thead>
                     <tbody>
 
+
+
                     <#list list as person>
                     <tr>
                             <td>${person.id}</td>
@@ -113,19 +116,29 @@
                             <td>${person.kind}</td>
                             <td>${person.cost}</td>
                             <td>${person.status}</td>
+                            <td>${person.person.getFirstName()} ${person.person.getLastName()}</td>
+
 
                         <td>
                             <a class="btn btn-success" href="/admin/edit_user/${person.id}" name="edit" >Edit</a>
                         </td>
                         <td>
-                            <button class="btn btn-danger button-delete-confirmation" name="delete" type="submit" value="Delete">Delete</button>
+                        <form action="/admin/delete_repair" name="deleteForm" method="GET">
+                    <input type="hidden" name="id" value="${person.id}" />
+                    <button class="btn btn-danger button-delete-confirmation" type="submit" name="action" value="Delete">Delete</button>
+                        </form>
                         </td>
+
+
                         </tr>
 
                     </#list>
-
                     </tbody>
                 </table>
+                <a class="nav-link active" href="http://localhost:8081/register">
+                    <span data-feather="plus-circle"></span>
+                   Add Repair
+                </a>
             </div>
         </main>
     </div>
