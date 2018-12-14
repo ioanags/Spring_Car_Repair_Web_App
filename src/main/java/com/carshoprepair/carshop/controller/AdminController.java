@@ -1,10 +1,13 @@
 package com.carshoprepair.carshop.controller;
 
+import com.carshoprepair.carshop.controller.mappers.DeleteMapper;
 import com.carshoprepair.carshop.controller.mappers.SearchFormToModelMapper;
 import com.carshoprepair.carshop.domain.Person;
 import com.carshoprepair.carshop.domain.Repair;
+import com.carshoprepair.carshop.form.DeleteForm;
 import com.carshoprepair.carshop.form.SearchForm;
 import com.carshoprepair.carshop.models.PersonModel;
+import com.carshoprepair.carshop.models.RepairModel;
 import com.carshoprepair.carshop.service.PersonServiceImpl;
 import com.carshoprepair.carshop.service.RepairServiceImpl;
 import org.hibernate.annotations.GeneratorType;
@@ -31,12 +34,16 @@ public class AdminController {
     @Autowired
     private RepairServiceImpl repairService;
 
+    @Autowired
+    private DeleteMapper mapper;
+
 
     @GetMapping("/admin")
-    public String hello(Model model) {
+    public String admin_home(Model model) {
             List<Repair> repair = repairService.recentRepairs();
-            List<Person> person = personService.findAll();
             model.addAttribute("list",repair);
+
+
             return "admin_home";
 
     }
@@ -46,6 +53,30 @@ public class AdminController {
         List<Person> person = personService.findAll();
         model.addAttribute("list",person);
         return "admin_user_list";
+    }
+
+    @GetMapping("/admin/delete_user")
+    public String admin_delete_user(Model model,
+                               DeleteForm deleteForm){
+        List<Person> person = personService.findAll();
+        model.addAttribute("list",person);
+        PersonModel personModel = mapper.Person_deleteModel(deleteForm);
+        personService.delete(personModel.getId());
+
+        return "redirect:/admin/users";
+
+    }
+
+    @GetMapping("/admin/delete_repair")
+    public String admin_delete_repair(Model model,
+                                      DeleteForm deleteForm){
+        List<Repair> repair = repairService.recentRepairs();
+        model.addAttribute("list",repair);
+        RepairModel repairModel = mapper.Repair_deleteModel(deleteForm);
+        repairService.delete(repairModel.getId());
+
+        return "redirect:/admin";
+
     }
 
 

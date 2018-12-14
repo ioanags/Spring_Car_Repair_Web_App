@@ -58,6 +58,10 @@ public class PersonServiceImpl implements PersonService {
         return personJPARepository.findPersonByAfmOrEmail(afm,email);
     }
 
+    public void delete(Long id){
+        personJPARepository.deleteById(id);
+    }
+
 
 
 

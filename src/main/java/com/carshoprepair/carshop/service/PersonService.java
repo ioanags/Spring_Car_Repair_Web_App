@@ -13,6 +13,8 @@ public interface PersonService {
     Optional<Person> findPersonByEmailAndPassword(String email, String password);
     List<Person> searchByAfmOrEmail(long afm,String Email);
 
+    void delete(Long id);
+
 
     PersonModel create(PersonModel person);
 

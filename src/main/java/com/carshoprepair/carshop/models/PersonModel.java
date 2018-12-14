@@ -3,6 +3,7 @@ package com.carshoprepair.carshop.models;
 import com.carshoprepair.carshop.domain.TypeEnum;
 
 public class PersonModel {
+    private Long id;
     private String firstName;
     private String lastName;
     private String email;
@@ -13,7 +14,8 @@ public class PersonModel {
     private String plate;
     private TypeEnum type;
 
- public PersonModel(){}
+    public PersonModel(){}
+
     public TypeEnum getType() {
         return type;
     }
@@ -84,5 +86,13 @@ public class PersonModel {
 
     public void setPlate(String plate) {
         this.plate = plate;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

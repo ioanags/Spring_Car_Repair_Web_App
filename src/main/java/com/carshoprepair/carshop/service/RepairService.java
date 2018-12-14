@@ -11,4 +11,8 @@ public interface RepairService  {
     List<Repair> findAll();
     List<Repair> recentRepairs();
 
+    void delete(Long id);
+
+
+
 }
