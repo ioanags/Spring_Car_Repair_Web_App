@@ -28,12 +28,6 @@ public class SearchController {
     @GetMapping("/search")
 
     public String search(Model model, @Valid @ModelAttribute("searchForm") SearchForm searchForm) {
-//        if (bindingResult.hasErrors()) {
-//            //have some error handling here, perhaps add extra error messages to the model
-//            model.addAttribute(ERROR_MESSAGE, "an error occurred");
-//            return "";
-//        }
-
         PersonModel searchModel = searchFormToModelMapper.mapSearchToPersonModel(searchForm);
         List<Person> person = personService.searchByAfmOrEmail(searchModel.getAfm(), searchModel.getEmail());
         model.addAttribute("list",person);
