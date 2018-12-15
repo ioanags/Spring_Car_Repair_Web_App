@@ -128,8 +128,6 @@
                     <button class="btn btn-danger button-delete-confirmation" type="submit" name="action" value="Delete">Delete</button>
                         </form>
                         </td>
-
-
                         </tr>
 
                     </#list>

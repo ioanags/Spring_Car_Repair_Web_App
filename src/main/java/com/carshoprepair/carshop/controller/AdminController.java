@@ -78,7 +78,7 @@ public class AdminController {
 
     @RequestMapping("admin/edit_user/{id}")
     public String edit(@PathVariable("id") long id,Model model){
-        Optional<Person> person = personService.editPersonById(id);
+        Optional<Person> person = personService.findPersonById(id);
         model.addAttribute("name",person.get().getFirstName());
         model.addAttribute("lastName",person.get().getLastName());
         model.addAttribute("email",person.get().getEmail());

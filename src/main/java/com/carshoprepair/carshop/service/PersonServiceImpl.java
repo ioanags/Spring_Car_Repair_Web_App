@@ -50,13 +50,13 @@ public class PersonServiceImpl implements PersonService {
         return personJPARepository.findPersonByEmailAndPassword(email,password);
     }
 
-    @Override
+
     public List<Person> searchByAfmOrEmail(long afm, String email){
         return personJPARepository.findPersonByAfmOrEmail(afm,email);
     }
 
     @Override
-    public Optional<Person> editPersonById(long id){
+    public Optional<Person> findPersonById(long id){
         return personJPARepository.findPersonById(id);
     }
 

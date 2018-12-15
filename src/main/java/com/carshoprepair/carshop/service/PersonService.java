@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface PersonService {
-    Optional<Person> editPersonById(long id);
+    Optional<Person> findPersonById(long id);
     List<Person> findAll();
 
     Optional<Person> findPersonByEmailAndPassword(String email, String password);

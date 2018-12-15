@@ -74,51 +74,40 @@
 
 
             <div class="container">
-                <form action="/register" name="registerForm" method="POST">
+                <form action="/register" name="editForm" method="POST">
                     <div class="form-group w-50">
-
                         <label for="first-name"><strong>First Name:</strong></label>
                         <input  name="firstName" type="text" class="form-control" id="first-name" value="${name}" placeholder="Enter Your Name">
                     </div>
                     <div class="form-group w-50">
-
                         <label for="last-name"><strong>Last Name:</strong></label>
                         <input name="lastName" type="text" class="form-control" id="last-name" value="${lastName}" placeholder="Enter Your Last Name">
                     </div>
                     <div class="form-group w-50">
-
                         <label for="email"><strong>Email:</strong></label>
                         <input name="email" type="email" class="form-control" id="email" value="${email}" placeholder="Enter Your Email">
-
             </div>
             <div class="form-group w-50">
-
                 <label for="password"><strong>Password:</strong></label>
                 <input name="password" type="password" class="form-control" id="password" value="${password}" placeholder="Enter Your Password">
             </div>
-
             <div class="form-group w-50">
-
                 <label for="address"><strong>Address:</strong></label>
                 <input name="address" type="text" class="form-control" id="address" value="${address}" placeholder="Address">
             </div>
             <div class="form-group w-50">
-
                 <label for="afm"><strong>ΑΦΜ:</strong></label>
                 <input name="afm" type="text" class="form-control" id="afm" value="${afm}" placeholder="ΑΦΜ">
             </div>
             <div class="form-group w-50">
-
                 <label for="plate"><strong>Plate:</strong></label>
                 <input name="plate" type="text" class="form-control" id="plate" value="${plate}" placeholder="Enter Your Plate">
             </div>
             <div class="form-group w-50">
-
                 <label for="carModel"><strong>Car Model:</strong></label>
                 <input name="carModel" type="text" class="form-control" id="carModel" value="${carModel}" placeholder="Enter Your Car Model">
             </div>
             <div class="form-check form-check-inline">
-
                 <input class="form-check-input" type="radio" name="type" id="user" value="${type}">
                 <label class="form-check-label" for="user">User</label>
             </div>
