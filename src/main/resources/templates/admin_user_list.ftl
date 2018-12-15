@@ -122,7 +122,7 @@
                         <td>${person.afm}</td>
 
                     <td>
-                        <button class="btn btn-success" type="submit" value="Save Changes">Edit</button>
+                    <a class="btn btn-success" href="/admin/edit_user/${person.id}" name="edit" >Edit</a>
                     </td>
                         <td>
                         <form action="/admin/delete_user" name="deleteForm" method="GET">

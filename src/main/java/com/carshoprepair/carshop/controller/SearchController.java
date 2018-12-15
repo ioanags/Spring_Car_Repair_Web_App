@@ -30,7 +30,7 @@ public class SearchController {
     public String search(Model model, @Valid @ModelAttribute("searchForm") SearchForm searchForm) {
         PersonModel searchModel = searchFormToModelMapper.mapSearchToPersonModel(searchForm);
         List<Person> person = personService.searchByAfmOrEmail(searchModel.getAfm(), searchModel.getEmail());
-        model.addAttribute("list",person);
+        model.addAttribute("persons",person);
         return "search";
 
     }

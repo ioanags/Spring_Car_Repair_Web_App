@@ -7,16 +7,15 @@ import java.util.List;
 import java.util.Optional;
 
 public interface PersonService {
-    Optional<Person> findPersonById(long id);
+    Person findPersonById(long id);
     List<Person> findAll();
 
     Optional<Person> findPersonByEmailAndPassword(String email, String password);
     List<Person> searchByAfmOrEmail(long afm,String Email);
-
     void delete(Long id);
-
-
     PersonModel create(PersonModel person);
+
+
 
 
 }

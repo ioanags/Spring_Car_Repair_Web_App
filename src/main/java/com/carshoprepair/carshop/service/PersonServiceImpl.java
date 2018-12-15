@@ -1,8 +1,11 @@
 package com.carshoprepair.carshop.service;
 
+import com.carshoprepair.carshop.controller.mappers.EditFormToModelMapper;
 import com.carshoprepair.carshop.controller.mappers.PersonToPersonModelMapper;
 import com.carshoprepair.carshop.controller.mappers.SearchFormToModelMapper;
 import com.carshoprepair.carshop.domain.Person;
+import com.carshoprepair.carshop.form.EditForm;
+import com.carshoprepair.carshop.form.RegisterForm;
 import com.carshoprepair.carshop.models.PersonModel;
 import com.carshoprepair.carshop.repository.PersonJPARepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +21,8 @@ public class PersonServiceImpl implements PersonService {
     private PersonToPersonModelMapper personModelMapper;
     @Autowired
     private SearchFormToModelMapper searchModelMapper;
+    @Autowired
+    private EditFormToModelMapper editFormToModelMapper;
 
 
 
@@ -56,12 +61,28 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public Optional<Person> findPersonById(long id){
+    public Person findPersonById(long id){
         return personJPARepository.findPersonById(id);
     }
 
     public void delete(Long id){
         personJPARepository.deleteById(id);
+    }
+
+    public Person edit(EditForm editForm){
+        Person person = personJPARepository.findById(Long.parseLong(editForm.getId())).get();
+                person.setFirstName(editForm.getFirstName());
+                person.setLastName(editForm.getLastName());
+                person.setAddress(editForm.getAddress());
+                person.setEmail(editForm.getEmail());
+                person.setPassword(editForm.getPassword());
+                person.setPlate(editForm.getPlate());
+                person.setCarModel(editForm.getCarModel());
+                person.setType(editForm.getType());
+                person.setAfm(editForm.getAfm());
+
+       return personJPARepository.save(person);
+
     }
 
 

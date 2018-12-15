@@ -74,7 +74,11 @@
 
 
             <div class="container">
-                <form action="/register" name="editForm" method="POST">
+                <form action="/admin/users/edit" name="editForm" method="POST">
+                    <div class="form-group w-50">
+
+                        <input  name="id" type="hidden" class="form-control" id="id" value="${id}" placeholder="Enter Your Name">
+                    </div>
                     <div class="form-group w-50">
                         <label for="first-name"><strong>First Name:</strong></label>
                         <input  name="firstName" type="text" class="form-control" id="first-name" value="${name}" placeholder="Enter Your Name">
@@ -107,15 +111,21 @@
                 <label for="carModel"><strong>Car Model:</strong></label>
                 <input name="carModel" type="text" class="form-control" id="carModel" value="${carModel}" placeholder="Enter Your Car Model">
             </div>
+
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="type" id="user" value="${type}">
+                <input class="form-check-input" type="radio" name="type" id="user" value="User"
+                checked="${(type=="User")?then("checked","")}">
+
                 <label class="form-check-label" for="user">User</label>
             </div>
-            <div class="form-check form-check-inline">
 
-                <input class="form-check-input" type="radio" name="type" id="admin" value="${type}">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="type" id="admin" value="Admin"
+                 checked="${(type=="Admin")?then("checked","")}">
+
                 <label class="form-check-label" for="admin">Admin</label>
             </div>
+
             <button type="submit" class="btn btn-primary clearfix">Add</button>
             </form>
     </div>

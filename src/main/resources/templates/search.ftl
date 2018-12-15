@@ -29,7 +29,7 @@
                 <input class="form-control" id="searchID" name="email" placeholder="Email" type="text">
             </div>
         </div>
-        <button class="btn btn-default" type="submit">Search</button>
+        <button class="btn btn-primary" type="submit">Search</button>
     </form>
     <!-- <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"> -->
     <ul class="navbar-nav px-3">
@@ -92,7 +92,7 @@
                     </thead>
                     <tbody>
 
-                    <#list list as searchResult>
+                    <#list persons as searchResult>
                     <tr>
                             <td>${searchResult.id}</td>
                             <td>${searchResult.firstName}</td>
@@ -101,7 +101,7 @@
                             <td>${searchResult.address}</td>
                             <td>${searchResult.plate}</td>
                         <td>
-                            <button class="btn btn-success" name="edit" type="submit" value="Edit">Edit</button>
+                            <a class="btn btn-success" href="/admin/edit_user/${searchResult.id}" name="edit" >Edit</a>
                         </td>
                         <td>
                             <button class="btn btn-danger button-delete-confirmation" name="Delete" type="submit" value="Delete">Delete</button>

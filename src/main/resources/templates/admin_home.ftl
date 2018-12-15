@@ -120,7 +120,7 @@
 
 
                         <td>
-                            <a class="btn btn-success" href="/admin/edit_user/${person.id}" name="edit" >Edit</a>
+                            <a class="btn btn-success" href="" name="edit" >Edit</a>
                         </td>
                         <td>
                         <form action="/admin/delete_repair" name="deleteForm" method="GET">
