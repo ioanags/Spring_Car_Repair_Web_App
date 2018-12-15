@@ -1,13 +1,13 @@
 package com.carshoprepair.carshop.controller;
 
 import com.carshoprepair.carshop.controller.mappers.DeleteMapper;
-import com.carshoprepair.carshop.controller.mappers.EditFormToModelMapper;
+import com.carshoprepair.carshop.controller.mappers.RepairFormToModelMapper;
 import com.carshoprepair.carshop.controller.mappers.SearchFormToModelMapper;
 import com.carshoprepair.carshop.domain.Person;
 import com.carshoprepair.carshop.domain.Repair;
 import com.carshoprepair.carshop.form.DeleteForm;
-import com.carshoprepair.carshop.form.EditForm;
 import com.carshoprepair.carshop.form.RegisterForm;
+import com.carshoprepair.carshop.form.RepairForm;
 import com.carshoprepair.carshop.form.SearchForm;
 import com.carshoprepair.carshop.models.PersonModel;
 import com.carshoprepair.carshop.models.RepairModel;
@@ -19,7 +19,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -39,7 +38,9 @@ public class AdminController {
     private DeleteMapper mapper;
 
     @Autowired
-    private EditFormToModelMapper editFormToModelMapper;
+    private RepairFormToModelMapper RepairMapper;
+
+
 
 
     @GetMapping("/admin")
@@ -83,10 +84,9 @@ public class AdminController {
 
     }
 
-    @GetMapping ("/admin/edit_user/{id}")
+    @RequestMapping("admin/edit_user/{id}")
     public String edit(@PathVariable("id") long id,Model model){
         Person person = personService.findPersonById(id);
-        model.addAttribute("id",person.getId());
         model.addAttribute("name",person.getFirstName());
         model.addAttribute("lastName",person.getLastName());
         model.addAttribute("email",person.getEmail());
@@ -100,12 +100,24 @@ public class AdminController {
         return "edit_user";
     }
 
-    @PostMapping(value = "/admin/users/edit")
-    public String updateBook(Model model, @ModelAttribute(name = "editForm") EditForm editForm, RedirectAttributes redirectAttributes) {
-        personService.edit(editForm);
-        return "redirect:/admin/users";
+
+    @GetMapping(value = "admin/repair_create")
+    public String repair_create(Model model){
+        model.addAttribute("repairForm",new RepairForm());
+
+        return "create_repair";
     }
 
+    @PostMapping(value = "admin/repair_create")
+    public String repair_create(Model model,
+                                @Valid @ModelAttribute("repairForm")
+                                 RepairForm repairForm ){
+
+        RepairModel repairModel = RepairMapper.mapToRepairModel(repairForm);
+        repairService.create(repairModel);
+        return "redirect:/success";
+
+    }
 
 
 

@@ -42,7 +42,7 @@ public class Person {
     private Long afm;
 
 
-    @OneToMany(mappedBy = "person", targetEntity = Repair.class)
+    @OneToMany(mappedBy = "person", cascade = CascadeType.REMOVE,targetEntity = Repair.class)
     private List<Repair> repairs;
     public Person(){}
 
