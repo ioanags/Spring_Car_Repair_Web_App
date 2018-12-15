@@ -1,11 +1,8 @@
 package com.carshoprepair.carshop.service;
 
-import com.carshoprepair.carshop.controller.mappers.EditFormToModelMapper;
 import com.carshoprepair.carshop.controller.mappers.PersonToPersonModelMapper;
-import com.carshoprepair.carshop.controller.mappers.SearchFormToModelMapper;
 import com.carshoprepair.carshop.domain.Person;
 import com.carshoprepair.carshop.form.EditForm;
-import com.carshoprepair.carshop.form.RegisterForm;
 import com.carshoprepair.carshop.models.PersonModel;
 import com.carshoprepair.carshop.repository.PersonJPARepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +16,7 @@ public class PersonServiceImpl implements PersonService {
     private PersonJPARepository personJPARepository;
     @Autowired
     private PersonToPersonModelMapper personModelMapper;
-    @Autowired
-    private SearchFormToModelMapper searchModelMapper;
-    @Autowired
-    private EditFormToModelMapper editFormToModelMapper;
+
 
 
 
@@ -50,14 +44,11 @@ public class PersonServiceImpl implements PersonService {
         return personModelMapper.mapToPersonModel(savedPerson);
     }
 
-    @Override
-    public Optional<Person> findPersonByEmailAndPassword(String email,String password){
-        return personJPARepository.findPersonByEmailAndPassword(email,password);
-    }
 
 
-    public List<Person> searchByAfmOrEmail(long afm, String email){
-        return personJPARepository.findPersonByAfmOrEmail(afm,email);
+
+    public List<Person> searchByAfmAndEmail(long afm, String email){
+        return personJPARepository.findPersonByAfmAndEmail(afm,email);
     }
 
     @Override
@@ -83,6 +74,15 @@ public class PersonServiceImpl implements PersonService {
 
        return personJPARepository.save(person);
 
+    }
+
+    @Override
+    public List<Person> searchByAfm(long afm){
+        return personJPARepository.findPersonByAfm(afm);
+    }
+    @Override
+    public List<Person> searchByEmail(String email){
+        return personJPARepository.findPersonByEmail(email);
     }
 
 

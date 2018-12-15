@@ -14,9 +14,10 @@ import java.util.Optional;
 public interface PersonJPARepository extends JpaRepository<Person,Long> {
 
     Person findPersonById(long id);
-    Optional<Person> findPersonByEmail(String email);
+    List<Person> findPersonByEmail(String email);
     Optional<Person> findPersonByEmailAndPassword(String email,String password);
-    List<Person> findPersonByAfmOrEmail(long afm, String Email);
+    List<Person> findPersonByAfmAndEmail(long afm, String Email);
+    List<Person> findPersonByAfm(long Afm);
     Optional<Person> findById(Long id);
     Person save(Person person);
 

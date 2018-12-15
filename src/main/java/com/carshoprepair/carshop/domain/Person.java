@@ -39,7 +39,7 @@ public class Person {
     private TypeEnum type;
 
     @Column(name = "Afm",unique = true,length = MAX_NAME_LENGTH)
-    private Long afm;
+    private long afm;
 
 
     @OneToMany(mappedBy = "person", targetEntity = Repair.class)
@@ -131,11 +131,11 @@ public class Person {
         this.type = type;
     }
 
-    public Long getAfm() {
+    public long getAfm() {
         return afm;
     }
 
-    public void setAfm(Long afm) {
+    public void setAfm(long afm) {
         this.afm = afm;
     }
 

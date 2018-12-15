@@ -19,7 +19,7 @@
 <body>
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
     <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Hello</a>
-    <form action="/search" name="searchForm" class="navbar-form navbar-right form-inline" id="search" method="GET">
+    <form action="/search" name="searchForm" class="navbar-form navbar-right form-inline" id="search">
         <div class="form-group">
             <input class="form-control" id="searchID" name="afm" placeholder="ΑΦΜ" type="text">
             <div class="form-group">
