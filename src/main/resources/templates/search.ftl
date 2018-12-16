@@ -99,7 +99,7 @@
                             <td>${searchResult.firstName}</td>
                             <td>${searchResult.lastName}</td>
                             <td>${searchResult.email}</td>
-                            <td>${searchResult.afm}</td>
+                            <td>${searchResult.afm?c}</td>
                             <td>${searchResult.address}</td>
                             <td>${searchResult.plate}</td>
                         <td>

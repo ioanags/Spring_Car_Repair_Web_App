@@ -47,7 +47,7 @@ public class PersonServiceImpl implements PersonService {
 
 
 
-    public List<Person> searchByAfmAndEmail(long afm, String email){
+    public List<Person> searchByAfmAndEmail(Long afm, String email){
         return personJPARepository.findPersonByAfmAndEmail(afm,email);
     }
 
@@ -77,7 +77,7 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public List<Person> searchByAfm(long afm){
+    public List<Person> searchByAfm(Long afm){
         return personJPARepository.findPersonByAfm(afm);
     }
     @Override

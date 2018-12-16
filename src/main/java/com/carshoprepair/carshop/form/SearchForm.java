@@ -1,14 +1,14 @@
 package com.carshoprepair.carshop.form;
 
 public class SearchForm {
-    private long afm;
+    private Long afm;
     private String email;
 
     public String getEmail() {
         return email;
     }
 
-    public long getAfm() {
+    public Long getAfm() {
         return afm;
     }
 
@@ -16,7 +16,7 @@ public class SearchForm {
         this.email = email;
     }
 
-    public void setAfm(long afm) {
+    public void setAfm(Long afm) {
         this.afm = afm;
     }
 }

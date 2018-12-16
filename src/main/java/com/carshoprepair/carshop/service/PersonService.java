@@ -9,12 +9,10 @@ import java.util.List;
 public interface PersonService {
     Person findPersonById(long id);
     List<Person> findAll();
-
-
-    List<Person> searchByAfmAndEmail(long afm,String Email);
+    List<Person> searchByAfmAndEmail(Long afm,String Email);
     void delete(Long id);
     PersonModel create(PersonModel person);
-    List<Person> searchByAfm(long afm);
+    List<Person> searchByAfm(Long afm);
     List<Person> searchByEmail(String email);
 
 

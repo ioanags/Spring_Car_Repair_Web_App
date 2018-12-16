@@ -28,16 +28,16 @@ public class SearchController {
         return "search";
     }
         private List<Person> searchUsers(SearchForm searchForm) {
-        long afm = searchForm.getAfm();
+        Long afm = searchForm.getAfm();
         String email = searchForm.getEmail();
 
         List<Person> users = new ArrayList<>();
-        if (!email.isEmpty() && afm!=0) {
+        if (!email.isEmpty() && afm!=null) {
             users = personService.searchByAfmAndEmail(afm,email);
         } else if (!email.isEmpty()) {
             users = personService.searchByEmail(email);
-           //searchForm.setAfm(0);
-        } else if (afm!=0) {
+           searchForm.setAfm(0L);
+        } else if (afm!=null) {
             users = personService.searchByAfm(afm);
         }
         return users;
