@@ -22,21 +22,24 @@
 <body>
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
     <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Hello</a>
-    <form action="/search" name="searchForm" class="navbar-form navbar-right form-inline" id="search">
-        <div class="form-group">
-            <input class="form-control" id="searchID" name="afm" placeholder="ΑΦΜ" type="text">
+    <div class="navbar-right">
+        <form action="/search" name="searchForm" class="navbar-form  form-inline " id="search">
+
+            <div class="form-group">
+                <input class="form-control" id="searchID" name="afm" placeholder="ΑΦΜ" type="text">
+            </div>
             <div class="form-group">
                 <input class="form-control" id="searchID" name="email" placeholder="Email" type="text">
             </div>
-        </div>
-        <button class="btn btn-default" type="submit">Search</button>
-    </form>
-    <!-- <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"> -->
-    <ul class="navbar-nav px-3">
-        <li class="nav-item text-nowrap">
-            <a class="nav-link" href="#">Sign out</a>
-        </li>
-    </ul>
+
+            <button class="btn btn-primary mr-5" type="submit">Search</button>
+
+            <a class="nav-link btn btn-outline-light" href="#">Sign out</a>
+        </form>
+    </div>
+
+
+
 </nav>
 
 <div class="container-fluid mt-5">
@@ -45,19 +48,25 @@
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link active" href="http://localhost:8081/admin">
+                        <a class="nav-link active" href="/admin">
                             <span data-feather="home"></span>
                             Home
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="http://localhost:8081/register">
+                        <a class="nav-link active" href="/admin/register">
                             <span data-feather="plus-circle"></span>
                             Create user
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="http://localhost:8081/admin">
+                        <a class="nav-link active" href="/admin/repair_create">
+                            <span data-feather="plus-circle"></span>
+                            Add Repair
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/admin">
                             <span data-feather="list"></span>
                             Repair List
                         </a>
@@ -109,7 +118,8 @@
                         <td>${person.plate}</td>
                         <td>${person.carModel}</td>
                         <td>${person.type}</td>
-                        <td>${person.afm}</td>
+                        <td>${person.afm?c}</td>
+
 
                     <td>
                     <a class="btn btn-success" href="/admin/edit_user/${person.id}" name="edit" >Edit</a>

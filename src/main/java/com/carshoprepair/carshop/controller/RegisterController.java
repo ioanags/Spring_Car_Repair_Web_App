@@ -21,52 +21,52 @@ import javax.validation.Valid;
 import static com.carshoprepair.carshop.utils.GlobalAttributes.ERROR_MESSAGE;
 
 
-@Controller
-public class RegisterController {
-    private static final String REGISTER_FORM = "registerForm";
-
-   @Autowired
-   private PersonServiceImpl personServiceImpl;
-
-   @Autowired
-   private RegisterValidator registerValidator;
-
-    @Autowired
-    private RegistrationFormToModelMapper mapper;
-
-
-    @InitBinder(REGISTER_FORM)
-    protected void initBinder(final WebDataBinder binder) {binder.addValidators(registerValidator); }
-
-
-    @GetMapping(value = "/register")
-    public String register(Model model) {
-        model.addAttribute(REGISTER_FORM,
-                new RegisterForm());
-        return "create_user";
-    }
-
-    @PostMapping(value = "/register")
-    public String register(Model model,
-                           @Valid @ModelAttribute(REGISTER_FORM)
-                                   RegisterForm registerForm,
-                           BindingResult bindingResult) {
-
-       if (bindingResult.hasErrors()) {
-            //have some error handling here, perhaps add extra error messages to the model
-            model.addAttribute(ERROR_MESSAGE, "an error occurred");
-            return "create_user";
-        }
-        PersonModel personModel = mapper.mapToPersonModel(registerForm);
-        personServiceImpl.create(personModel);
-        return "redirect:/success";
-    }
-
-    @GetMapping("/success")
-    public String success(){
-        return "Success";
-    }
-
-}
+//@Controller
+//public class RegisterController {
+//    private static final String REGISTER_FORM = "registerForm";
+//
+//   @Autowired
+//   private PersonServiceImpl personServiceImpl;
+//
+//   @Autowired
+//   private RegisterValidator registerValidator;
+//
+//    @Autowired
+//    private RegistrationFormToModelMapper mapper;
+//
+//
+//    @InitBinder(REGISTER_FORM)
+//    protected void initBinder(final WebDataBinder binder) {binder.addValidators(registerValidator); }
+//
+//
+//    @GetMapping(value = "/register")
+//    public String register(Model model) {
+//        model.addAttribute(REGISTER_FORM,
+//                new RegisterForm());
+//        return "create_user";
+//    }
+//
+//    @PostMapping(value = "/register")
+//    public String register(Model model,
+//                           @Valid @ModelAttribute(REGISTER_FORM)
+//                                   RegisterForm registerForm,
+//                           BindingResult bindingResult) {
+//
+//       if (bindingResult.hasErrors()) {
+//            //have some error handling here, perhaps add extra error messages to the model
+//            model.addAttribute(ERROR_MESSAGE, "an error occurred");
+//            return "create_user";
+//        }
+//        PersonModel personModel = mapper.mapToPersonModel(registerForm);
+//        personServiceImpl.create(personModel);
+//        return "redirect:/admin/users";
+//    }
+//
+//    @GetMapping("/success")
+//    public String success(){
+//        return "Success";
+//    }
+//
+//}
 
 

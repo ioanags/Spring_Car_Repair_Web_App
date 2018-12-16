@@ -1,6 +1,7 @@
 package com.carshoprepair.carshop.controller;
 
 import com.carshoprepair.carshop.controller.mappers.DeleteMapper;
+import com.carshoprepair.carshop.controller.mappers.RegistrationFormToModelMapper;
 import com.carshoprepair.carshop.controller.mappers.RepairFormToModelMapper;
 import com.carshoprepair.carshop.domain.Person;
 import com.carshoprepair.carshop.domain.Repair;
@@ -9,17 +10,24 @@ import com.carshoprepair.carshop.models.PersonModel;
 import com.carshoprepair.carshop.models.RepairModel;
 import com.carshoprepair.carshop.service.PersonServiceImpl;
 import com.carshoprepair.carshop.service.RepairServiceImpl;
+import com.carshoprepair.carshop.validators.RegisterValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.util.List;
 
+import static com.carshoprepair.carshop.utils.GlobalAttributes.ERROR_MESSAGE;
+
 @Controller
 public class AdminController {
+    private static final String REGISTER_FORM = "registerForm";
+
     @Autowired
     private PersonServiceImpl personService;
 
@@ -29,9 +37,18 @@ public class AdminController {
     @Autowired
     private DeleteMapper mapper;
 
+    @Autowired
+    private RegisterValidator registerValidator;
+
+    @Autowired
+    private RegistrationFormToModelMapper registerMapper;
+
 
     @Autowired
     private RepairFormToModelMapper RepairMapper;
+
+    @InitBinder(REGISTER_FORM)
+    protected void initBinder(final WebDataBinder binder) {binder.addValidators(registerValidator); }
 
 
 
@@ -112,8 +129,32 @@ public class AdminController {
 
         RepairModel repairModel = RepairMapper.mapToRepairModel(repairForm);
         repairService.create(repairModel);
-        return "redirect:/success";
+        return "redirect:/admin";
 
+    }
+
+
+    @GetMapping(value = "/admin/register")
+    public String register(Model model) {
+        model.addAttribute(REGISTER_FORM,
+                new RegisterForm());
+        return "create_user";
+    }
+
+    @PostMapping(value = "/admin/register")
+    public String register(Model model,
+                           @Valid @ModelAttribute(REGISTER_FORM)
+                                   RegisterForm registerForm,
+                           BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()) {
+            //have some error handling here, perhaps add extra error messages to the model
+            model.addAttribute(ERROR_MESSAGE, "an error occurred");
+            return "create_user";
+        }
+        PersonModel personModel = registerMapper.mapToPersonModel(registerForm);
+        personService.create(personModel);
+        return "redirect:/admin/users";
     }
 
 

@@ -48,19 +48,25 @@
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link active" href="http://localhost:8081/admin">
+                        <a class="nav-link active" href="/admin">
                             <span data-feather="home"></span>
                             Home
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="http://localhost:8081/register">
+                        <a class="nav-link active" href="/admin/register">
                             <span data-feather="plus-circle"></span>
                             Create user
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="http://localhost:8081/admin/users">
+                        <a class="nav-link active" href="/admin/repair_create">
+                            <span data-feather="plus-circle"></span>
+                            Add Repair
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/admin/users">
                             <span data-feather="list"></span>
                             Users List
                         </a>

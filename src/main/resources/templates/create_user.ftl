@@ -19,42 +19,50 @@
 <body>
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
     <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Hello</a>
-    <form action="/search" name="searchForm" class="navbar-form navbar-right form-inline" id="search">
-        <div class="form-group">
-            <input class="form-control" id="searchID" name="afm" placeholder="ΑΦΜ" type="text">
+    <div class="navbar-right">
+        <form action="/search" name="searchForm" class="navbar-form  form-inline " id="search">
+
+            <div class="form-group">
+                <input class="form-control" id="searchID" name="afm" placeholder="ΑΦΜ" type="text">
+            </div>
             <div class="form-group">
                 <input class="form-control" id="searchID" name="email" placeholder="Email" type="text">
             </div>
-        </div>
-        <button class="btn btn-default" type="submit">Search</button>
-    </form>
 
-    <ul class="navbar-nav px-3">
-        <li class="nav-item text-nowrap">
-            <a class="nav-link" href="#">Sign out</a>
-        </li>
-    </ul>
+            <button class="btn btn-primary mr-5" type="submit">Search</button>
+
+            <a class="nav-link btn btn-outline-light" href="#">Sign out</a>
+        </form>
+    </div>
+
+
+
 </nav>
-
 <div class="container-fluid mt-5">
     <div class="row">
         <nav class="col-md-2 d-none d-md-block bg-light sidebar">
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link active" href="http://localhost:8081/admin">
+                        <a class="nav-link active" href="/admin">
                             <span data-feather="home"></span>
                             Home
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="http://localhost:8081/register">
+                        <a class="nav-link active" href="/admin/register">
                             <span data-feather="plus-circle"></span>
                             Create user
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="http://localhost:8081/admin/users">
+                        <a class="nav-link active" href="/admin/repair_create">
+                            <span data-feather="plus-circle"></span>
+                            Add Repair
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/admin/users">
                             <span data-feather="list"></span>
                             Users List
                         </a>
@@ -74,7 +82,7 @@
 
 
             <div class="container">
-                <form action="/register" name="registerForm" method="POST">
+                <form action="/admin/register" name="registerForm" method="POST">
                     <div class="form-group w-50">
                         <@spring.bind "registerForm.firstName"/>
                         <label for="first-name"><strong>First Name:</strong></label>
