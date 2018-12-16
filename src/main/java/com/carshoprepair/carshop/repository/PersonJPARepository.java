@@ -14,7 +14,7 @@ import java.util.Optional;
 public interface PersonJPARepository extends JpaRepository<Person,Long> {
 
     Person findPersonById(long id);
-    List<Person> findPersonByEmail(String email);
+    Optional<Person> findPersonByEmail(String email);
     Optional<Person> findPersonByEmailAndPassword(String email,String password);
     List<Person> findPersonByAfmAndEmail(long afm, String Email);
     List<Person> findPersonByAfm(long Afm);

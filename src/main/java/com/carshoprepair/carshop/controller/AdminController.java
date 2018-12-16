@@ -1,10 +1,11 @@
 package com.carshoprepair.carshop.controller;
 
 import com.carshoprepair.carshop.controller.mappers.DeleteMapper;
+import com.carshoprepair.carshop.controller.mappers.RepairFormToModelMapper;
+import com.carshoprepair.carshop.controller.mappers.SearchFormToModelMapper;
 import com.carshoprepair.carshop.domain.Person;
 import com.carshoprepair.carshop.domain.Repair;
-import com.carshoprepair.carshop.form.DeleteForm;
-import com.carshoprepair.carshop.form.EditForm;
+import com.carshoprepair.carshop.form.*;
 import com.carshoprepair.carshop.models.PersonModel;
 import com.carshoprepair.carshop.models.RepairModel;
 import com.carshoprepair.carshop.service.PersonServiceImpl;
@@ -15,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -28,6 +30,9 @@ public class AdminController {
     @Autowired
     private DeleteMapper mapper;
 
+
+    @Autowired
+    private RepairFormToModelMapper RepairMapper;
 
 
 
@@ -94,7 +99,23 @@ public class AdminController {
         personService.edit(editForm);
         return "redirect:/admin/users";
     }
+    @GetMapping(value = "admin/repair_create")
+    public String repair_create(Model model){
+        model.addAttribute("repairForm",new RepairForm());
 
+        return "create_repair";
+    }
+
+    @PostMapping(value = "admin/repair_create")
+    public String repair_create(Model model,
+                                @Valid @ModelAttribute("repairForm")
+                                 RepairForm repairForm ){
+
+        RepairModel repairModel = RepairMapper.mapToRepairModel(repairForm);
+        repairService.create(repairModel);
+        return "redirect:/success";
+
+    }
 
 
 

@@ -2,6 +2,7 @@ package com.carshoprepair.carshop.service;
 
 import com.carshoprepair.carshop.domain.Person;
 import com.carshoprepair.carshop.domain.Repair;
+import com.carshoprepair.carshop.models.RepairModel;
 
 import java.util.Date;
 import java.util.List;
@@ -14,5 +15,6 @@ public interface RepairService  {
     void delete(Long id);
 
 
+    RepairModel create(RepairModel repairModel);
 
 }

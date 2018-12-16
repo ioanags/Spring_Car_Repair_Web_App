@@ -123,7 +123,7 @@
                     </#list>
                     </tbody>
                 </table>
-                <a class="nav-link active" href="http://localhost:8081/register">
+                <a class="nav-link active" href="admin/repair_create">
                     <span data-feather="plus-circle"></span>
                    Add Repair
                 </a>

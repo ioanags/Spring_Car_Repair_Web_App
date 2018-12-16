@@ -1,6 +1,13 @@
 package com.carshoprepair.carshop.models;
 
+import com.carshoprepair.carshop.domain.Person;
+import com.carshoprepair.carshop.service.PersonServiceImpl;
+import com.fasterxml.jackson.annotation.OptBoolean;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.Date;
+import java.util.Optional;
+
 
 public class RepairModel {
     private Long id;
@@ -9,14 +16,16 @@ public class RepairModel {
     private Long cost;
     private String status;
     private String description;
-    private Long person_id;
+    private Person person;
 
-    public Long getPerson_id() {
-        return person_id;
+
+
+    public Person getPerson() {
+        return person;
     }
 
-    public void setPerson_id(Long person_id) {
-        this.person_id = person_id;
+    public void setPerson(Person person) {
+        this.person = person;
     }
 
     public Long getId() {
