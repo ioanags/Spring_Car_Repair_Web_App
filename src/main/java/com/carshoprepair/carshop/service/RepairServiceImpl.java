@@ -3,6 +3,7 @@ package com.carshoprepair.carshop.service;
 import com.carshoprepair.carshop.controller.mappers.RepairToRepairModelMapper;
 import com.carshoprepair.carshop.domain.Person;
 import com.carshoprepair.carshop.domain.Repair;
+import com.carshoprepair.carshop.form.EditRepairForm;
 import com.carshoprepair.carshop.models.RepairModel;
 import com.carshoprepair.carshop.repository.RepairJPARepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +55,25 @@ public class RepairServiceImpl implements RepairService {
         return  repairModelMapper.mapToRepairModel(savedRepair);
 
     }
+    @Override
+    public Repair findRepairById(long id){
+        return repairJPARepository.findRepairById(id);
+    }
+
+    public Repair editRepair(EditRepairForm editRepairForm){
+        Repair repair = repairJPARepository.findById(editRepairForm.getId()).get();
+        repair.setCost(editRepairForm.getCost());
+        repair.setDate(editRepairForm.getDate());
+        repair.setDescription(editRepairForm.getDescription());
+        repair.setKind(editRepairForm.getKind());
+        repair.setStatus(editRepairForm.getStatus());
+        repair.setId(editRepairForm.getId());
+
+
+         return repairJPARepository.save(repair);
+
+    }
+
 
 
 }

@@ -8,9 +8,10 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>User Registration</title>
+    <title>Repair registration</title>
 
     <!-- Bootstrap core CSS -->
+    <link href=“https://cdnjs.cloudflare.com/ajax/libs/smalot-bootstrap-datetimepicker/2.4.4/css/bootstrap-datetimepicker.min.css” rel=“stylesheet”>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <!-- Custom styles for this template -->
     <link href="/dashboard.css" rel="stylesheet">
@@ -23,6 +24,7 @@
         <form action="/search" name="searchForm" class="navbar-form  form-inline " id="search">
 
             <div class="form-group">
+                <label class="text-light h5" for="searchID"><strong>Search User: </strong></label>
                 <input class="form-control" id="searchID" name="afm" placeholder="ΑΦΜ" type="text">
             </div>
             <div class="form-group">
@@ -83,14 +85,17 @@
 
 
             <div class="container">
-                <form action="/admin/repair_create" name="repairForm" method="POST">
+                <form action="/admin/repair_create" name="repairForm"  id="repairForm" method="POST">
                     <div class="form-group w-50">
                         <label for="date"><strong>Date</strong></label>
-                        <input  name="date" type="date" class="form-control" id="date" placeholder="yyyy-mm-dd">
+                        <input  name="date" type="text" class="form-control" id="#datetimepicker" placeholder="yyyy-mm-dd">
                     </div>
                     <div class="form-group w-50">
                         <label for="kind"><strong>Kind</strong></label>
-                        <input name="kind" type="text" class="form-control" id="kind" placeholder="Enter kind">
+                        <select name="kind" id="kind" class="form-control" id="kind">
+                            <option>Small</option>
+                            <option>Big</option>
+                        </select>
                     </div>
                     <div class="form-group w-50">
                             <label for="cost"><strong>Cost</strong></label>
@@ -98,7 +103,11 @@
                     </div>
                     <div class="form-group w-50">
                         <label for="status"><strong>Status</strong></label>
-                        <input name="status" type="text" class="form-control" id="status" placeholder="Enter status">
+                        <select name="status" id="status" class="form-control">
+                            <option>On Progress</option>
+                            <option>Ready</option>
+                            <option>Appending</option>
+                        </select>
                     </div>
 
                     <div class="form-group w-50">
@@ -120,14 +129,32 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
+
 <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
 <script>
     feather.replace()
 </script>
+
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script type=“text/javascript” src=“https://cdnjs.cloudflare.com/ajax/libs/smalot-bootstrap-datetimepicker/2.4.4/js/bootstrap-datetimepicker.min.js“></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
+<script>
 
+    (function ($) {x``
+
+        var $inputDatepicker = $('input#datetimepicker');
+
+        if ($inputDatepicker.length > 0) {
+            $inputDatepicker.datetimepicker({
+                format: 'yyyy-mm-dd hh:ii'
+            });
+        }
+    })(jQuery);
+
+
+
+</script>
 </body>
 </html>

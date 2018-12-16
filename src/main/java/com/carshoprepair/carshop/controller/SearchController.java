@@ -2,6 +2,7 @@ package com.carshoprepair.carshop.controller;
 
 import com.carshoprepair.carshop.domain.Person;
 import com.carshoprepair.carshop.form.SearchForm;
+import com.carshoprepair.carshop.models.PersonModel;
 import com.carshoprepair.carshop.service.PersonServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,16 +23,16 @@ public class SearchController {
 
     public String search(Model model,@ModelAttribute("searchForm") SearchForm searchForm) {
 
-        List<Person> person = searchUsers(searchForm);
+        List<PersonModel> person = searchUsers(searchForm);
         //personService.searchByAfmAndEmail(searchModel.getAfm(), searchModel.getEmail());
         model.addAttribute("persons",person);
         return "search";
     }
-        private List<Person> searchUsers(SearchForm searchForm) {
+        private List<PersonModel> searchUsers(SearchForm searchForm) {
         Long afm = searchForm.getAfm();
         String email = searchForm.getEmail();
 
-        List<Person> users = new ArrayList<>();
+        List<PersonModel> users = new ArrayList<>();
         if (!email.isEmpty() && afm!=null) {
             users = personService.searchByAfmAndEmail(afm,email);
         } else if (!email.isEmpty()) {

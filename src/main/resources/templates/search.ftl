@@ -26,6 +26,7 @@
         <form action="/search" name="searchForm" class="navbar-form  form-inline " id="search">
 
             <div class="form-group">
+                <label class="text-light h5" for="searchID"><strong>Search User: </strong></label>
                 <input class="form-control" id="searchID" name="afm" placeholder="ΑΦΜ" type="text">
             </div>
             <div class="form-group">

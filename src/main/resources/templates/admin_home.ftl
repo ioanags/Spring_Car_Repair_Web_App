@@ -26,6 +26,7 @@
         <form action="/search" name="searchForm" class="navbar-form  form-inline " id="search">
 
             <div class="form-group">
+                <label class="text-light h5" for="searchID"><strong>Search User: &nbsp; </strong></label>
                 <input class="form-control" id="searchID" name="afm" placeholder="ΑΦΜ" type="text">
             </div>
               <div class="form-group">
@@ -36,6 +37,7 @@
 
             <a class="nav-link btn btn-outline-light" href="#">Sign out</a>
         </form>
+
         </div>
 
 
@@ -95,32 +97,27 @@
                         <th>Cost</th>
                         <th>Status</th>
                         <th>Name</th>
+                        <th>Plate</th>
                         <th>Edit</th>
                         <th>Delete</th>
-
-
                     </tr>
                     </thead>
                     <tbody>
-
-
-
-                    <#list list as person>
+                    <#list list as repair>
                     <tr>
-                            <td>${person.id}</td>
-                            <td>${person.date}</td>
-                            <td>${person.kind}</td>
-                            <td>${person.cost}</td>
-                            <td>${person.status}</td>
-                            <td>${person.person.getFirstName()} ${person.person.getLastName()}</td>
-
-
+                            <td>${repair.id}</td>
+                            <td>${repair.date}</td>
+                            <td>${repair.kind}</td>
+                            <td>${repair.cost}</td>
+                            <td>${repair.status}</td>
+                            <td>${repair.person.getFirstName()} ${repair.person.getLastName()}</td>
+                            <td>${repair.person.getPlate()}</td>
                         <td>
-                            <a class="btn btn-success" href="" name="edit" >Edit</a>
+                            <a class="btn btn-success" href="/admin/edit_repair/${repair.id}" name="edit" >Edit</a>
                         </td>
                         <td>
                         <form action="/admin/delete_repair" name="deleteForm" method="GET">
-                    <input type="hidden" name="id" value="${person.id}" />
+                    <input type="hidden" name="id" value="${repair.id}" />
                     <button class="btn btn-danger button-delete-confirmation" type="submit" name="action" value="Delete">Delete</button>
                         </form>
                         </td>

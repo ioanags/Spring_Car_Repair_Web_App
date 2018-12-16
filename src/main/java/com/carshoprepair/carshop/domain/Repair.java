@@ -1,6 +1,7 @@
 package com.carshoprepair.carshop.domain;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -13,7 +14,7 @@ public class Repair {
     private Long id;
 
     @Column(name = "Date", nullable = false)
-    private Date date;
+    private LocalDateTime date;
 
     @Column(name = "Kind", nullable = false)
     private String kind;
@@ -31,7 +32,7 @@ public class Repair {
     @JoinColumn(name = "Person_id")
     private Person person;
 
-    public Repair(Date date, String kind, Long cost, String description, Person person,String status) {
+    public Repair(LocalDateTime date, String kind, Long cost, String description, Person person,String status) {
         this.date = date;
         this.kind = kind;
         this.cost = cost;
@@ -47,7 +48,7 @@ public class Repair {
         return id;
     }
 
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
@@ -75,7 +76,7 @@ public class Repair {
         this.id = id;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 

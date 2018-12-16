@@ -9,12 +9,11 @@ import java.util.List;
 
 public interface RepairService  {
     List<Repair> findRepairByPerson(Person person);
-    List<Repair> findAll();
     List<Repair> recentRepairs();
-
+    List<Repair> findAll();
     void delete(Long id);
-
-
     RepairModel create(RepairModel repairModel);
+
+    Repair findRepairById(long id);
 
 }

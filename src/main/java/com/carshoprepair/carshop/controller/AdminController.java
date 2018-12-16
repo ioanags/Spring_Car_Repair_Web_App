@@ -111,7 +111,7 @@ public class AdminController {
     }
 
     @PostMapping(value = "/admin/users/edit")
-    public String updateBook(Model model, @ModelAttribute(name = "editForm") EditForm editForm, RedirectAttributes redirectAttributes) {
+    public String updateUser(Model model, @ModelAttribute(name = "editForm") EditForm editForm, RedirectAttributes redirectAttributes) {
         personService.edit(editForm);
         return "redirect:/admin/users";
     }
@@ -155,6 +155,25 @@ public class AdminController {
         PersonModel personModel = registerMapper.mapToPersonModel(registerForm);
         personService.create(personModel);
         return "redirect:/admin/users";
+    }
+    @GetMapping ("/admin/edit_repair/{id}")
+    public String editRepair(@PathVariable("id") long id,Model model){
+        Repair repair = repairService.findRepairById(id);
+        model.addAttribute("cost",repair.getCost());
+        model.addAttribute("kind",repair.getKind());
+        model.addAttribute("date",repair.getDate());
+        model.addAttribute("status",repair.getStatus());
+        model.addAttribute("description",repair.getDescription());
+        model.addAttribute("personId",repair.getPerson());
+        model.addAttribute("repairId",repair.getId());
+
+        return "edit_repair";
+    }
+
+    @PostMapping(value = "/admin/repairs/edit")
+    public String updateRepairs(Model model, @ModelAttribute(name = "repairForm") EditRepairForm editRepairForm, RedirectAttributes redirectAttributes) {
+       repairService.editRepair(editRepairForm);
+        return "redirect:/admin";
     }
 
 

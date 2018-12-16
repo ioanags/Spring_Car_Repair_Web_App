@@ -1,6 +1,7 @@
 package com.carshoprepair.carshop.service;
 
 import com.carshoprepair.carshop.controller.mappers.PersonToPersonModelMapper;
+import com.carshoprepair.carshop.controller.mappers.SearchMapper;
 import com.carshoprepair.carshop.domain.Person;
 import com.carshoprepair.carshop.form.EditForm;
 import com.carshoprepair.carshop.models.PersonModel;
@@ -10,12 +11,16 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+
 @Service
 public class PersonServiceImpl implements PersonService {
     @Autowired
     private PersonJPARepository personJPARepository;
     @Autowired
     private PersonToPersonModelMapper personModelMapper;
+    @Autowired
+    private SearchMapper searchMapper;
 
 
 
@@ -47,8 +52,12 @@ public class PersonServiceImpl implements PersonService {
 
 
 
-    public List<Person> searchByAfmAndEmail(Long afm, String email){
-        return personJPARepository.findPersonByAfmAndEmail(afm,email);
+    public List<PersonModel> searchByAfmAndEmail(Long afm, String email){
+        return personJPARepository
+                .findPersonByAfmAndEmail(afm,email)
+                .stream()
+                .map(person -> searchMapper.mapToPersonModel(person))
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -77,13 +86,24 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public List<Person> searchByAfm(Long afm){
-        return personJPARepository.findPersonByAfm(afm);
+    public List<PersonModel> searchByAfm(Long afm) {
+        return personJPARepository
+                .findPersonByAfm(afm)
+                .stream()
+                .map(person -> searchMapper.mapToPersonModel(person))
+                .collect(Collectors.toList());
     }
+
     @Override
-    public List<Person> searchByEmail(String email){
-        return personJPARepository.findPersonByEmail(email);
+    public List<PersonModel> searchByEmail(String email){
+        return personJPARepository
+                .findPersonByEmail(email)
+                .stream()
+                .map(person -> searchMapper.mapToPersonModel(person))
+                .collect(Collectors.toList());
     }
+
+
 
 
 
