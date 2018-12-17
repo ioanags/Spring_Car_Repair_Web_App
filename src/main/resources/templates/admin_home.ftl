@@ -73,6 +73,12 @@
                             Users List
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/search/repair">
+                            <span data-feather="search"></span>
+                            Search Repair
+                        </a>
+                    </li>
 
                 </ul>
             </div>

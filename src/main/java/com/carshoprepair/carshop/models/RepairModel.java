@@ -1,13 +1,9 @@
 package com.carshoprepair.carshop.models;
 
 import com.carshoprepair.carshop.domain.Person;
-import com.carshoprepair.carshop.service.PersonServiceImpl;
-import com.fasterxml.jackson.annotation.OptBoolean;
-import org.springframework.beans.factory.annotation.Autowired;
+
 
 import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.Optional;
 
 
 public class RepairModel {
@@ -18,14 +14,17 @@ public class RepairModel {
     private String status;
     private String description;
     private Person person;
-    private String person_id;
+    private String personId;
 
-    public String getPerson_id() {
-        return person_id;
+
+
+
+    public String getPersonId() {
+        return personId;
     }
 
-    public void setPerson_id(String person_id) {
-        this.person_id = person_id;
+    public void setPersonId(String person_id) {
+        this.personId = personId;
     }
 
     public Person getPerson() {

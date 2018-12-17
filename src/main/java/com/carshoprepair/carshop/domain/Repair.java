@@ -44,6 +44,10 @@ public class Repair {
     public Repair() {
     }
 
+    public Repair(Person person){
+    this.person = person;
+    }
+
     public Long getId() {
         return id;
     }

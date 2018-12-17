@@ -49,17 +49,6 @@ public class PersonServiceImpl implements PersonService {
         return personModelMapper.mapToPersonModel(savedPerson);
     }
 
-
-
-
-    public List<PersonModel> searchByAfmAndEmail(Long afm, String email){
-        return personJPARepository
-                .findPersonByAfmAndEmail(afm,email)
-                .stream()
-                .map(person -> searchMapper.mapToPersonModel(person))
-                .collect(Collectors.toList());
-    }
-
     @Override
     public Person findPersonById(long id){
         return personJPARepository.findPersonById(id);
@@ -83,6 +72,14 @@ public class PersonServiceImpl implements PersonService {
 
        return personJPARepository.save(person);
 
+    }
+    @Override
+    public List<PersonModel> searchByAfmAndEmail(Long afm, String email){
+        return personJPARepository
+                .findPersonByAfmAndEmail(afm,email)
+                .stream()
+                .map(person -> searchMapper.mapToPersonModel(person))
+                .collect(Collectors.toList());
     }
 
     @Override

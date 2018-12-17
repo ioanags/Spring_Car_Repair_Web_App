@@ -70,6 +70,12 @@
                             Users List
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/search/repair">
+                            <span data-feather="search"></span>
+                            Search Repair
+                        </a>
+                    </li>
 
                 </ul>
             </div>
@@ -100,7 +106,7 @@
                             <option>Big</option>
                         </select>
                     </div>
-                    <div class="form-group w-50">8
+                    <div class="form-group w-50">
                         <label for="cost"><strong>Cost</strong></label>
                         <input name="cost" type="text" class="form-control" value="${cost}" id="cost" placeholder="Enter cost">
                     </div>
@@ -141,7 +147,7 @@
 
 <script>
 
-    (function ($) {x``
+    (function ($) {x``;
 
         var $inputDatepicker = $('input#datetimepicker');
 
