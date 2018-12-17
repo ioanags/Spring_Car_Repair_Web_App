@@ -99,6 +99,9 @@
                         <@spring.bind "registerForm.lastName"/>
                         <label for="last-name"><strong>Last Name:</strong></label>
                         <input name="lastName" type="text" class="form-control" id="last-name" placeholder="Enter Your Last Name">
+                        <#list spring.status.errorMessages as error>
+                            <span>${error}</span>
+                        </#list>
                     </div>
                     <div class="form-group w-50">
                         <@spring.bind "registerForm.email"/>
@@ -112,6 +115,9 @@
                         <@spring.bind "registerForm.password"/>
                         <label for="password"><strong>Password:</strong></label>
                         <input name="password" type="password" class="form-control" id="password" placeholder="Enter Your Password">
+                        <#list spring.status.errorMessages as error>
+                            <span>${error}</span>
+                        </#list>
                     </div>
 
                     <div class="form-group w-50">
@@ -123,6 +129,9 @@
                         <@spring.bind "registerForm.afm"/>
                         <label for="afm"><strong>ΑΦΜ:</strong></label>
                         <input name="afm" type="text" class="form-control" id="afm" placeholder="ΑΦΜ">
+                        <#list spring.status.errorMessages as error>
+                            <span>${error}</span>
+                        </#list>
                     </div>
                     <div class="form-group w-50">
                         <@spring.bind "registerForm.plate"/>
@@ -130,7 +139,7 @@
                         <input name="plate" type="text" class="form-control" id="plate" placeholder="Enter Your Plate">
                     </div>
                     <div class="form-group w-50">
-                        <@spring.bind "registerForm.email"/>
+                        <@spring.bind "registerForm.carModel"/>
                         <label for="carModel"><strong>Car Model:</strong></label>
                         <input name="carModel" type="text" class="form-control" id="carModel" placeholder="Enter Your Car Model">
                     </div>
@@ -138,11 +147,13 @@
                         <@spring.bind "registerForm.type"/>
                         <input class="form-check-input" type="radio" name="type" id="user" value="User">
                         <label class="form-check-label" for="user">User</label>
+
                     </div>
                     <div class="form-check form-check-inline">
                         <@spring.bind "registerForm.type"/>
                         <input class="form-check-input" type="radio" name="type" id="admin" value="Admin">
                         <label class="form-check-label" for="admin">Admin</label>
+
                     </div>
                     <button type="submit" class="btn btn-primary clearfix">Add</button>
                 </form>

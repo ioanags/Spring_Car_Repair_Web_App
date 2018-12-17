@@ -18,7 +18,8 @@ public interface RepairJPARepository extends JpaRepository<Repair,Long> {
     List<Repair> findTop10ByOrderByDateAsc();
 
     Repair findRepairById(long id);
-    List<Repair> findRepairByPlate(String plate);
-    List<Repair> findRepairByAfm(Long afm);
-    List<Repair> findRepairByDate(LocalDateTime date);
+//    List<Repair> findRepairByPlate(String plate);
+//    List<Repair> findRepairByAfm(Long afm);
+//    List<Repair> findRepairByDate(LocalDateTime date);
+//    List<Repair> findByPerson_id(long id);
 }

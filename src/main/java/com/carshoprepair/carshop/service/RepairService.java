@@ -15,8 +15,9 @@ public interface RepairService  {
     void delete(Long id);
     RepairModel create(RepairModel repairModel);
     Repair findRepairById(long id);
-    List<RepairModel> searchRepairByPlate(String plate);
-    List<RepairModel> searchRepairByAfm(Long afm);
-    List<RepairModel> searchRepairByDate(LocalDateTime date);
+//    List<RepairModel> getPersonById(long id);
+//    List<RepairModel> searchRepairByPlate(String plate);
+//    List<RepairModel> searchRepairByAfm(Long afm);
+//    List<RepairModel> searchRepairByDate(LocalDateTime date);
 
 }

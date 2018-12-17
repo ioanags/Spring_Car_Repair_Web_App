@@ -18,13 +18,23 @@ public class RegisterValidator implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
 
-        RegisterForm registrationForm = (RegisterForm) target;
+        RegisterForm registerForm = (RegisterForm) target;
 
         //here perform your checks
-        if (registrationForm.getEmail() == null) {
+        if (registerForm.getAfm() == 0) {
             // add an error for the field called ‘email’
-            errors.rejectValue("email", "email is empty");
-        }
+            errors.rejectValue("afm", "email is empty");}
+//        }else if(registerForm.getAfm() == 0){
+//            errors.rejectValue("afm","afm is empty");
+//        }else if (registerForm.getPlate() == null){
+//            errors.rejectValue("plate","plate is empty");
+//        }else if (registerForm.getLastName() == null){
+//            errors.rejectValue("lastName","Last name is empty");
+//        }else if(registerForm.getPassword() == null){
+//            errors.rejectValue("password","Password is empty");
+//        }else if(registerForm.getType() == null){
+//            errors.rejectValue("type","type is empty");
+//        }
 
         ValidationUtils.rejectIfEmpty(errors, "firstName", "firstName.empty");
     }

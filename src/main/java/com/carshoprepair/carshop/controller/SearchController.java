@@ -1,8 +1,6 @@
 package com.carshoprepair.carshop.controller;
 
-import com.carshoprepair.carshop.controller.mappers.SearchRepairMapper;
-import com.carshoprepair.carshop.domain.Person;
-import com.carshoprepair.carshop.domain.Repair;
+
 import com.carshoprepair.carshop.form.SearchForm;
 import com.carshoprepair.carshop.form.SearchRepairForm;
 import com.carshoprepair.carshop.models.PersonModel;
@@ -33,7 +31,6 @@ public class SearchController {
     public String search(Model model,@ModelAttribute("searchForm") SearchForm searchForm) {
 
         List<PersonModel> person = searchUsers(searchForm);
-        //personService.searchByAfmAndEmail(searchModel.getAfm(), searchModel.getEmail());
         model.addAttribute("persons",person);
         return "search";
     }
@@ -52,36 +49,36 @@ public class SearchController {
         }
         return users;
     }
-    @GetMapping("/search/repair")
-    private String searchRepair(Model model){
-        model.addAttribute("searchRepairForm",new SearchRepairForm());
-                return "search_repair_form";
-    }
-    @GetMapping("/search/repair/results")
-    public String searchRepair(Model model, @ModelAttribute("searchRepairForm")SearchRepairForm searchRepairForm){
-        List<RepairModel> repair = searchRepair(searchRepairForm);
-        model.addAttribute("repairs",repair);
-        return "search_repair_results";
-    }
-    private List<RepairModel> searchRepair(SearchRepairForm searchRepairForm) {
-        Long afm = searchRepairForm.getAfm();
-        LocalDateTime date = searchRepairForm.getDate();
-        String plate = searchRepairForm.getPlate();
-
-        List<RepairModel> repairs = new ArrayList<>();
-        if (afm != null) {
-            repairs = repairService.searchRepairByAfm(afm);
-
-        } else if (!plate.isEmpty()) {
-            repairs = repairService.searchRepairByPlate(plate);
-            searchRepairForm.setAfm(0L);
-        } else if (date != null) {
-            repairs = repairService.searchRepairByDate(date);
-            searchRepairForm.setAfm(0L);
-        }
-        return repairs;
-
-    }
+//    @GetMapping("/search/repair")
+//    private String searchRepair(Model model){
+//        model.addAttribute("searchRepairForm",new SearchRepairForm());
+//                return "search_repair_form";
+//    }
+//    @GetMapping("/search/repair/results")
+//    public String searchRepair(Model model, @ModelAttribute("searchRepairForm")SearchRepairForm searchRepairForm){
+//        List<RepairModel> repair = searchRepair(searchRepairForm);
+//        model.addAttribute("repairs",repair);
+//        return "search_repair_results";
+//    }
+//    private List<RepairModel> searchRepair(SearchRepairForm searchRepairForm) {
+//        Long afm = searchRepairForm.getAfm();
+//        LocalDateTime date = searchRepairForm.getDate();
+//        String plate = searchRepairForm.getPlate();
+//
+//        List<RepairModel> repairs = new ArrayList<>();
+//        if (afm != null) {
+//            repairs = repairService.searchRepairByAfm(afm);
+//
+//        } else if (!plate.isEmpty()) {
+//            repairs = repairService.searchRepairByPlate(plate);
+//            searchRepairForm.setAfm(0L);
+//        } else if (date != null) {
+//            repairs = repairService.searchRepairByDate(date);
+//            searchRepairForm.setAfm(0L);
+//        }
+//        return repairs;
+//
+//    }
 
 
 }

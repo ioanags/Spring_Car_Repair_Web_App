@@ -14,16 +14,16 @@ public class RepairModel {
     private String status;
     private String description;
     private Person person;
-    private String personId;
+    private Long personId;
 
 
 
 
-    public String getPersonId() {
+    public Long getPersonId() {
         return personId;
     }
 
-    public void setPersonId(String person_id) {
+    public void setPersonId(Long person_id) {
         this.personId = personId;
     }
 
