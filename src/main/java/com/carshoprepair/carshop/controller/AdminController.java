@@ -58,6 +58,10 @@ public class AdminController {
             model.addAttribute("list",repair);
 
 
+            Person person = personService.findPersonByLastname("Makris");
+        System.out.println(person.getLastName()+" "+person.getFirstName());
+
+
             return "admin_home";
 
     }

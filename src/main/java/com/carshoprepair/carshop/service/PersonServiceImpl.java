@@ -103,11 +103,10 @@ public class PersonServiceImpl implements PersonService {
                 .collect(Collectors.toList());
     }
 
-
-
-
-
-
+    @Override
+    public Person findPersonByLastname(String lastname) {
+        return personJPARepository.findPersonByLastName(lastname);
+    }
 
 
 }

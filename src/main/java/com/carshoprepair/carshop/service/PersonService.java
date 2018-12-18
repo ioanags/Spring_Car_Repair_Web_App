@@ -14,6 +14,7 @@ public interface PersonService {
     PersonModel create(PersonModel person);
     List<PersonModel> searchByAfm(Long afm);
     List<PersonModel> searchByEmail(String email);
+    Person findPersonByLastname(String lastname);
 
 
 
