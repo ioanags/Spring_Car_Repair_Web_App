@@ -25,7 +25,7 @@ public class Person {
     @Column(name = "Email",unique = true, length = MAX_NAME_LENGTH)
     private String email;
 
-    @Column(name = "Password", length = MAX_NAME_LENGTH)
+    @Column(name = "Password", length = 80)
     private String password;
 
     @Column(name="Plate",unique = true, length = 8)

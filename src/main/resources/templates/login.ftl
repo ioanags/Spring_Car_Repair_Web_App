@@ -7,7 +7,7 @@
     <meta name="author" content="">
 
 
-    <title>Signin Template for Bootstrap</title>
+    <title>Signin Team 4</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -19,11 +19,14 @@
 
   <body class="text-center">
   <div class="container">
+      <h1>Team 4</h1>
+      <img src="/home/sam/Desktop/team4-logo.png">
+      <h3>Welcome</h3>
     <form action="/login" name="login" method="POST" class="form-signin">
      <!-- <img class="mb-4" src="../../assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> -->
       <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-      <label for="inputEmail" class="sr-only">Lastname</label>
-      <input name="username" type="text" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+      <label for="lastname" class="sr-only">Lastname</label>
+      <input name="lastname" type="text" id="lastname" class="form-control" placeholder="Lastname" required autofocus>
       <label for="inputPassword" class="sr-only">Password</label>
       <input name ="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
       <div class="checkbox mb-3">

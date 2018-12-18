@@ -41,6 +41,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .formLogin().loginPage("/login")
+                .usernameParameter("lastname")
                 .successHandler(loginSucessHandler)
                 .failureUrl("/login?error=true")
                 .and()
