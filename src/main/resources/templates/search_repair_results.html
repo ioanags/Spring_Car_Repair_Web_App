@@ -126,7 +126,7 @@
                         <td>
                             <form action="/admin/delete_repair" name="deleteForm" method="GET">
                                 <input type="hidden" name="id" value="${repair.id}" />
-                                <button class="btn btn-danger button-delete-confirmation" type="submit" name="action" value="Delete">Delete</button>
+                                <button class="btn btn-danger button-delete-confirmation" onclick="return confirm('Are you sure you want to delete this item?');"  type="submit" name="action" value="Delete">Delete</button>
                             </form>
                         </td>
                     </tr>
