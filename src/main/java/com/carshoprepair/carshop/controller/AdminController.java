@@ -140,8 +140,8 @@ public class AdminController {
         model.addAttribute("repairForm",new RepairForm());
 
         //Get Users Lastname
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String name = auth.getName(); //get logged in username
+        String name  = SecurityContextHolder.getContext()
+                .getAuthentication().getName(); //get logged in username
         model.addAttribute("lastname",name);
 
         return "create_repair";
@@ -152,8 +152,12 @@ public class AdminController {
                                 @Valid @ModelAttribute("repairForm")
                                  RepairForm repairForm ){
 
+        //Get Users Lastname
+        String name  = SecurityContextHolder.getContext()
+                .getAuthentication().getName(); //get logged in username
         RepairModel repairModel = RepairMapper.mapToRepairModel(repairForm);
         repairService.create(repairModel);
+        model.addAttribute("lastname", name);
 
         return "redirect:/admin";
 
