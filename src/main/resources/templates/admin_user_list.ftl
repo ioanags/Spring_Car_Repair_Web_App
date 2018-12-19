@@ -21,12 +21,12 @@
 
 <body>
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Hello ${lastname}</a>
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/admin">Hello ${lastname}</a>
     <div class="navbar-right">
         <form action="/search" name="searchForm" class="navbar-form  form-inline " id="search">
 
             <div class="form-group">
-                <label class="text-light h5" for="searchID"><strong>Search User: </strong></label>
+                <label class="text-light h5" for="searchID"><strong>Search User: &nbsp;</strong></label>
                 <input class="form-control" id="searchID" name="afm" placeholder="ΑΦΜ" type="text">
             </div>
             <div class="form-group">
@@ -100,7 +100,6 @@
                         <th>LastName</th>
                         <th>Adress</th>
                         <th>Email</th>
-                        <th>Password</th>
                         <th>Plate</th>
                         <th>Car Model</th>
                         <th>Type</th>
@@ -121,7 +120,6 @@
                         <td>${person.lastName}</td>
                         <td>${person.address}</td>
                         <td>${person.email}</td>
-                        <td>${person.password}</td>
                         <td>${person.plate}</td>
                         <td>${person.carModel}</td>
                         <td>${person.type}</td>

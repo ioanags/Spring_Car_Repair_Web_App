@@ -21,7 +21,7 @@
 
 <body>
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Hello ${lastname}</a>
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/owner">Hello ${lastname}</a>
     <div class="navbar-right">
             <a class="nav-link btn btn-outline-light" href="/logout">Sign out</a>
     </div>
