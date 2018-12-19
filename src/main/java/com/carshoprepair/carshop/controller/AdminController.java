@@ -8,6 +8,7 @@ import com.carshoprepair.carshop.domain.Repair;
 import com.carshoprepair.carshop.form.*;
 import com.carshoprepair.carshop.models.PersonModel;
 import com.carshoprepair.carshop.models.RepairModel;
+import com.carshoprepair.carshop.repository.PersonJPARepository;
 import com.carshoprepair.carshop.service.PersonServiceImpl;
 import com.carshoprepair.carshop.service.RepairServiceImpl;
 import com.carshoprepair.carshop.validators.RegisterValidator;
@@ -44,6 +45,9 @@ public class AdminController {
 
     @Autowired
     private RegistrationFormToModelMapper registerMapper;
+
+    @Autowired
+    private PersonJPARepository personJPARepository;
 
 
     @Autowired
@@ -204,6 +208,23 @@ public class AdminController {
         String name = auth.getName(); //get logged in username
         model.addAttribute("lastname",name);
         return "redirect:/admin";
+    }
+
+    @GetMapping(value = "/admin/my_repairs")
+    public String myRepairs(Model model){
+
+        //Get Users Lastname
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName(); //get logged in username
+        model.addAttribute("lastname",name);
+
+        Person person = personJPARepository.findPersonByLastName(name);
+        List<Repair> repairs = person.getRepairs();
+
+
+        model.addAttribute("list", repairs);
+
+        return "admin_myrepairs";
     }
 
 

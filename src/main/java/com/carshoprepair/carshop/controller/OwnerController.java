@@ -34,7 +34,7 @@ public class OwnerController {
 
         Person person = personJPARepository.findPersonByLastName(name);
         List<Repair> repairs = person.getRepairs();
-        System.out.println(repairs);
+
 
         model.addAttribute("list", repairs);
 

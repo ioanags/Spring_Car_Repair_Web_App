@@ -72,6 +72,12 @@
                             Users List
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/admin/my_repairs">
+                            <span data-feather="list"></span>
+                            My Repairs
+                        </a>
+                    </li>
 
                 </ul>
             </div>

@@ -7,7 +7,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>User List</title>
+    <title>Admin Home Page</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -26,7 +26,7 @@
         <form action="/search" name="searchForm" class="navbar-form  form-inline " id="search">
 
             <div class="form-group">
-                <label class="text-light h5" for="searchID"><strong>Search User: </strong></label>
+                <label class="text-light h5" for="searchID"><strong>Search User: &nbsp; </strong></label>
                 <input class="form-control" id="searchID" name="afm" placeholder="ΑΦΜ" type="text">
             </div>
             <div class="form-group">
@@ -37,6 +37,7 @@
 
             <a class="nav-link btn btn-outline-light" href="/logout">Sign out</a>
         </form>
+
     </div>
 
 
@@ -67,15 +68,9 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="/admin">
+                        <a class="nav-link active" href="/admin/users">
                             <span data-feather="list"></span>
-                            Repair List
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/admin/my_repairs">
-                            <span data-feather="list"></span>
-                            My Repairs
+                            Users List
                         </a>
                     </li>
 
@@ -85,66 +80,58 @@
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Users List</h1>
+                <h1 class="h2"> My Repairs</h1>
+
             </div>
 
 
 
-            <h2></h2>
+            <#if list?has_content>
             <div class="table-responsive">
                 <table class="table table-striped table-sm">
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>FirstName</th>
-                        <th>LastName</th>
-                        <th>Adress</th>
-                        <th>Email</th>
-                        <th>Password</th>
+                        <th>Date</th>
+                        <th>Kind</th>
+                        <th>Cost</th>
+                        <th>Status</th>
+                        <th>Name</th>
                         <th>Plate</th>
-                        <th>Car Model</th>
-                        <th>Type</th>
-                        <th>ΑΦΜ</th>
                         <th>Edit</th>
                         <th>Delete</th>
-
-
-
                     </tr>
                     </thead>
                     <tbody>
 
-                    <#list list as person>
+                    <#list list as repair>
                         <tr>
-                        <td>${person.id}</td>
-                        <td>${person.firstName}</td>
-                        <td>${person.lastName}</td>
-                        <td>${person.address}</td>
-                        <td>${person.email}</td>
-                        <td>${person.password}</td>
-                        <td>${person.plate}</td>
-                        <td>${person.carModel}</td>
-                        <td>${person.type}</td>
-                        <td>${person.afm?c}</td>
-
-
-                    <td>
-                    <a class="btn btn-success" href="/admin/edit_user/${person.id}" name="edit" >Edit</a>
-                    </td>
+                        <td>${repair.id}</td>
+                        <td>${repair.date}</td>
+                        <td>${repair.kind}</td>
+                        <td>${repair.cost}</td>
+                        <td>${repair.status}</td>
+                        <td>${repair.person.getFirstName()} ${repair.person.getLastName()}</td>
+                        <td>${repair.person.getPlate()}</td>
                         <td>
-                        <form action="/admin/delete_user" name="deleteForm" method="GET">
-                    <input type="hidden" name="id" value="${person.id}" />
-                    <button class="btn btn-danger button-delete-confirmation" type="submit" name="action" value="Delete">Delete</button>
+                    <a class="btn btn-success" href="/admin/edit_repair/${repair.id}" name="edit" >Edit</a>
+                        </td>
+                        <td>
+                        <form action="/admin/delete_repair" name="deleteForm" method="GET">
+                    <input type="hidden" name="id" value="${repair.id}" />
+                        <button class="btn btn-danger button-delete-confirmation" type="submit" name="action" value="Delete">Delete</button>
                         </form>
                         </td>
-
                         </tr>
                     </#list>
+                    <#else>
+                        <h3>You dont have any repairs to do</h3>
+                    </#if>
                     </tbody>
                 </table>
-                <a class="nav-link active" href="http://localhost:8081/register">
+                <a class="nav-link active" href="admin/repair_create">
                     <span data-feather="plus-circle"></span>
-                    Create user
+                    Add Repair
                 </a>
             </div>
         </main>
@@ -161,6 +148,7 @@
 <script>
     feather.replace()
 </script>
+
 
 </body>
 </html>
