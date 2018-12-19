@@ -21,23 +21,9 @@
 
 <body>
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Hello</a>
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Hello ${lastname}</a>
     <div class="navbar-right">
-        <form action="/search" name="searchForm" class="navbar-form  form-inline " id="search">
-
-            <div class="form-group">
-                <label class="text-light h5" for="searchID"><strong>Search User: &nbsp; </strong></label>
-                <input class="form-control" id="searchID" name="afm" placeholder="ΑΦΜ" type="text">
-            </div>
-            <div class="form-group">
-                <input class="form-control" id="searchID" name="email" placeholder="Email" type="text">
-            </div>
-
-            <button class="btn btn-primary mr-5" type="submit">Search</button>
-
-            <a class="nav-link btn btn-outline-light" href="#">Sign out</a>
-        </form>
-
+            <a class="nav-link btn btn-outline-light" href="/logout">Sign out</a>
     </div>
 
 
@@ -50,30 +36,12 @@
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link active" href="/admin">
+                        <a class="nav-link active" href="/owner">
                             <span data-feather="home"></span>
                             Home
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/admin/register">
-                            <span data-feather="plus-circle"></span>
-                            Create user
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/admin/repair_create">
-                            <span data-feather="plus-circle"></span>
-                            Add Repair
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/admin/users">
-                            <span data-feather="list"></span>
-                            Users List
-                            AEKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
-                        </a>
-                    </li>
+
 
                 </ul>
             </div>
@@ -81,13 +49,13 @@
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2"> Recent Repairs</h1>
+                <h1 class="h2"> My Repairs</h1>
 
             </div>
 
 
 
-            <h2>10 First Repairs</h2>
+            <#if list?has_content>
             <div class="table-responsive">
                 <table class="table table-striped table-sm">
                     <thead>
@@ -104,6 +72,7 @@
                     </tr>
                     </thead>
                     <tbody>
+
                     <#list list as repair>
                         <tr>
                         <td>${repair.id}</td>
@@ -123,14 +92,12 @@
                         </form>
                         </td>
                         </tr>
-
                     </#list>
+                        <#else>
+                        <h3>You dont have any repairs to do</h3>
+                    </#if>
                     </tbody>
                 </table>
-                <a class="nav-link active" href="admin/repair_create">
-                    <span data-feather="plus-circle"></span>
-                    Add Repair
-                </a>
             </div>
         </main>
     </div>

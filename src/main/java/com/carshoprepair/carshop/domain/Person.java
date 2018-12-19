@@ -44,6 +44,7 @@ public class Person {
 
     @OneToMany(mappedBy = "person", cascade = CascadeType.REMOVE,targetEntity = Repair.class)
     private List<Repair> repairs;
+
     public Person(){}
 
     public Person(String firstName, String lastName, String address, String email, String password, String plate, String carModel, TypeEnum type, Long afm) {
@@ -57,6 +58,14 @@ public class Person {
         this.type = type;
         this.afm = afm;
 
+    }
+
+    public List<Repair> getRepairs() {
+        return repairs;
+    }
+
+    public void setRepairs(List<Repair> repairs) {
+        this.repairs = repairs;
     }
 
     public Long getId() {

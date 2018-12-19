@@ -19,7 +19,7 @@
 
 <body>
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Hello</a>
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Hello ${lastname}</a>
     <div class="navbar-right">
         <form action="/search" name="searchForm" class="navbar-form  form-inline " id="search">
 
@@ -33,7 +33,7 @@
 
             <button class="btn btn-primary mr-5" type="submit">Search</button>
 
-            <a class="nav-link btn btn-outline-light" href="#">Sign out</a>
+            <a class="nav-link btn btn-outline-light" href="/logout">Sign out</a>
         </form>
     </div>
 

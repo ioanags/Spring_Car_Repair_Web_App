@@ -9,9 +9,6 @@ public class LoginResponse extends User {
 
     public LoginResponse(String lastname, String password, Collection<? extends GrantedAuthority> authorities) {
         super(lastname, password, authorities);
-        System.out.println(lastname);
-        System.out.println(password);
-        System.out.println(authorities);
     }
 }
 
