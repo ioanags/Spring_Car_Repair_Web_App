@@ -8,10 +8,13 @@ import com.carshoprepair.carshop.domain.Repair;
 import com.carshoprepair.carshop.form.*;
 import com.carshoprepair.carshop.models.PersonModel;
 import com.carshoprepair.carshop.models.RepairModel;
+import com.carshoprepair.carshop.repository.PersonJPARepository;
 import com.carshoprepair.carshop.service.PersonServiceImpl;
 import com.carshoprepair.carshop.service.RepairServiceImpl;
 import com.carshoprepair.carshop.validators.RegisterValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -43,6 +46,9 @@ public class AdminController {
     @Autowired
     private RegistrationFormToModelMapper registerMapper;
 
+    @Autowired
+    private PersonJPARepository personJPARepository;
+
 
     @Autowired
     private RepairFormToModelMapper RepairMapper;
@@ -57,6 +63,10 @@ public class AdminController {
             List<Repair> repair = repairService.recentRepairs();
             model.addAttribute("list",repair);
 
+            //Get Users Lastname
+           Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+           String name = auth.getName(); //get logged in username
+           model.addAttribute("lastname",name);
 
             return "admin_home";
 
@@ -66,6 +76,10 @@ public class AdminController {
     public String admin_users(Model model){
         List<Person> person = personService.findAll();
         model.addAttribute("list",person);
+        //Get Users Lastname
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName(); //get logged in username
+        model.addAttribute("lastname",name);
         return "admin_user_list";
     }
 
@@ -76,6 +90,7 @@ public class AdminController {
         model.addAttribute("list",person);
         PersonModel personModel = mapper.Person_deleteModel(deleteForm);
         personService.delete(personModel.getId());
+
 
         return "redirect:/admin/users";
 
@@ -107,6 +122,11 @@ public class AdminController {
         model.addAttribute("plate",person.getPlate());
         model.addAttribute("type",person.getType());
 
+        //Get Users Lastname
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName(); //get logged in username
+        model.addAttribute("lastname",name);
+
         return "edit_user";
     }
 
@@ -119,6 +139,11 @@ public class AdminController {
     public String repair_create(Model model){
         model.addAttribute("repairForm",new RepairForm());
 
+        //Get Users Lastname
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName(); //get logged in username
+        model.addAttribute("lastname",name);
+
         return "create_repair";
     }
 
@@ -129,6 +154,7 @@ public class AdminController {
 
         RepairModel repairModel = RepairMapper.mapToRepairModel(repairForm);
         repairService.create(repairModel);
+
         return "redirect:/admin";
 
     }
@@ -138,6 +164,10 @@ public class AdminController {
     public String register(Model model) {
         model.addAttribute(REGISTER_FORM,
                 new RegisterForm());
+        //Get Users Lastname
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName(); //get logged in username
+        model.addAttribute("lastname",name);
         return "create_user";
     }
 
@@ -173,7 +203,28 @@ public class AdminController {
     @PostMapping(value = "/admin/repairs/edit")
     public String updateRepairs(Model model, @ModelAttribute(name = "repairForm") EditRepairForm editRepairForm, RedirectAttributes redirectAttributes) {
        repairService.editRepair(editRepairForm);
+        //Get Users Lastname
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName(); //get logged in username
+        model.addAttribute("lastname",name);
         return "redirect:/admin";
+    }
+
+    @GetMapping(value = "/admin/my_repairs")
+    public String myRepairs(Model model){
+
+        //Get Users Lastname
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName(); //get logged in username
+        model.addAttribute("lastname",name);
+
+        Person person = personJPARepository.findPersonByLastName(name);
+        List<Repair> repairs = person.getRepairs();
+
+
+        model.addAttribute("list", repairs);
+
+        return "admin_myrepairs";
     }
 
 

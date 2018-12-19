@@ -8,6 +8,8 @@ import com.carshoprepair.carshop.models.RepairModel;
 import com.carshoprepair.carshop.service.PersonServiceImpl;
 import com.carshoprepair.carshop.service.RepairServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,6 +37,12 @@ public class SearchController {
 
         List<PersonModel> person = searchUsers(searchForm);
         model.addAttribute("persons",person);
+
+        //Get Users Lastname
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName(); //get logged in username
+        model.addAttribute("lastname",name);
+
         return "search";
     }
         private List<PersonModel> searchUsers(SearchForm searchForm) {

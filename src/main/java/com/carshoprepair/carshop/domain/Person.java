@@ -25,7 +25,7 @@ public class Person {
     @Column(name = "Email",unique = true, length = MAX_NAME_LENGTH)
     private String email;
 
-    @Column(name = "Password", length = MAX_NAME_LENGTH)
+    @Column(name = "Password", length = 80)
     private String password;
 
     @Column(name="Plate",unique = true, length = 8)
@@ -44,6 +44,7 @@ public class Person {
 
     @OneToMany(mappedBy = "person", cascade = CascadeType.REMOVE,targetEntity = Repair.class)
     private List<Repair> repairs;
+
     public Person(){}
 
     public Person(String firstName, String lastName, String address, String email, String password, String plate, String carModel, TypeEnum type, Long afm) {

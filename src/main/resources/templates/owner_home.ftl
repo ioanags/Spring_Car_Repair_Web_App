@@ -21,24 +21,10 @@
 
 <body>
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/admin">Hello ${lastname}</a>
-        <div class="navbar-right">
-        <form action="/search" name="searchForm" class="navbar-form  form-inline " id="search">
-
-            <div class="form-group">
-                <label class="text-light h5" for="searchID"><strong>Search User: &nbsp; </strong></label>
-                <input class="form-control" id="searchID" name="afm" placeholder="ΑΦΜ" type="text">
-            </div>
-              <div class="form-group">
-                    <input class="form-control" id="searchID" name="email" placeholder="Email" type="text">
-                </div>
-
-            <button class="btn btn-primary mr-5" type="submit">Search</button>
-
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/owner">Hello ${lastname}</a>
+    <div class="navbar-right">
             <a class="nav-link btn btn-outline-light" href="/logout">Sign out</a>
-        </form>
-
-        </div>
+    </div>
 
 
 
@@ -50,41 +36,12 @@
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link active" href="/admin">
+                        <a class="nav-link active" href="/owner">
                             <span data-feather="home"></span>
                             Home
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/admin/register">
-                            <span data-feather="plus-circle"></span>
-                            Create user
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/admin/repair_create">
-                            <span data-feather="plus-circle"></span>
-                            Add Repair
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/admin/users">
-                            <span data-feather="list"></span>
-                            Users List
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/search/repair">
-                            <span data-feather="search"></span>
-                            Search Repair
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/admin/my_repairs">
-                            <span data-feather="list"></span>
-                            My Repairs
-                        </a>
-                    </li>
+
 
                 </ul>
             </div>
@@ -92,13 +49,13 @@
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2"> Recent Repairs</h1>
+                <h1 class="h2"> My Repairs</h1>
 
             </div>
 
 
 
-            <h2>10 First Repairs</h2>
+            <#if list?has_content>
             <div class="table-responsive">
                 <table class="table table-striped table-sm">
                     <thead>
@@ -115,33 +72,32 @@
                     </tr>
                     </thead>
                     <tbody>
+
                     <#list list as repair>
-                    <tr>
-                            <td>${repair.id}</td>
-                            <td>${repair.date}</td>
-                            <td>${repair.kind}</td>
-                            <td>${repair.cost}</td>
-                            <td>${repair.status}</td>
-                            <td>${repair.person.getFirstName()} ${repair.person.getLastName()}</td>
-                            <td>${repair.person.getPlate()}</td>
+                        <tr>
+                        <td>${repair.id}</td>
+                        <td>${repair.date}</td>
+                        <td>${repair.kind}</td>
+                        <td>${repair.cost}</td>
+                        <td>${repair.status}</td>
+                        <td>${repair.person.getFirstName()} ${repair.person.getLastName()}</td>
+                        <td>${repair.person.getPlate()}</td>
                         <td>
-                            <a class="btn btn-success" href="/admin/edit_repair/${repair.id}" name="edit" >Edit</a>
+                    <a class="btn btn-success" href="/admin/edit_repair/${repair.id}" name="edit" >Edit</a>
                         </td>
                         <td>
                         <form action="/admin/delete_repair" name="deleteForm" method="GET">
                     <input type="hidden" name="id" value="${repair.id}" />
-                    <button class="btn btn-danger button-delete-confirmation" onclick="return confirm('Are you sure you want to delete this item?');" type="submit" name="action" value="Delete">Delete</button>
+                        <button class="btn btn-danger button-delete-confirmation" type="submit" name="action" value="Delete">Delete</button>
                         </form>
                         </td>
                         </tr>
-
                     </#list>
+                        <#else>
+                        <h3>You dont have any repairs to do</h3>
+                    </#if>
                     </tbody>
                 </table>
-                <a class="nav-link active" href="admin/repair_create">
-                    <span data-feather="plus-circle"></span>
-                   Add Repair
-                </a>
             </div>
         </main>
     </div>

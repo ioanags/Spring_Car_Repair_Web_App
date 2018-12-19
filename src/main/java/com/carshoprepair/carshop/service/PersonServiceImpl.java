@@ -7,6 +7,7 @@ import com.carshoprepair.carshop.form.EditForm;
 import com.carshoprepair.carshop.models.PersonModel;
 import com.carshoprepair.carshop.repository.PersonJPARepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,6 +22,8 @@ public class PersonServiceImpl implements PersonService {
     private PersonToPersonModelMapper personModelMapper;
     @Autowired
     private SearchMapper searchMapper;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
 
 
@@ -40,7 +43,7 @@ public class PersonServiceImpl implements PersonService {
                 personModel.getLastName(),
                 personModel.getAddress(),
                 personModel.getEmail(),
-                personModel.getPassword(),
+                passwordEncoder.encode(personModel.getPassword()),
                 personModel.getPlate(),
                 personModel.getCarModel(),
                 personModel.getType(),
@@ -100,11 +103,10 @@ public class PersonServiceImpl implements PersonService {
                 .collect(Collectors.toList());
     }
 
-
-
-
-
-
+    @Override
+    public Person findPersonByLastname(String lastname) {
+        return personJPARepository.findPersonByLastName(lastname);
+    }
 
 
 }
