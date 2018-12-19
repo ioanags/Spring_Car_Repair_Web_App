@@ -1,9 +1,14 @@
 package com.carshoprepair.carshop.form;
 
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class SearchRepairForm {
     private Long afm;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime date;
     private String plate;
 

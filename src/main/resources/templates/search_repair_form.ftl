@@ -96,7 +96,7 @@
                 <div class="form-group">
                     <@spring.bind "searchRepairForm.date"/>
                     <label for="searchDate">Date or Date's Range:</label>
-                    <input type="text" class="form-control" name="date "id="date"  placeholder="Enter Date">
+                    <input type="datetime-local" class="form-control" name="date" id="date"  placeholder="Enter Date">
                 </div>
                 <div class="form-group">
                     <@spring.bind "searchRepairForm.afm"/>
@@ -130,16 +130,17 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
 <!-- Icons -->
-<script>(function ($) {
+<#--<script>(function ($) {-->
 
-        var $inputDatepicker = $('#date');
+        <#--var $inputDatepicker = $('#date');-->
 
-        if ($inputDatepicker.length > 0) {
-            $inputDatepicker.datetimepicker({
-                format: 'yyyy-mm-dd hh:ii'
-            });
-        }
-    })(jQuery);</script>
+        <#--if ($inputDatepicker.length > 0) {-->
+            <#--$inputDatepicker.datetimepicker({-->
+                <#--format: "dd/MM/yyyy - hh:ii",-->
+                <#--autoclose: true,-->
+            <#--});-->
+        <#--}-->
+    <#--})(jQuery);</script>-->
 <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
 <script>
     feather.replace()

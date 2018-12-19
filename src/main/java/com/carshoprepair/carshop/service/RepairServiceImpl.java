@@ -104,11 +104,12 @@ public class RepairServiceImpl implements RepairService {
     @Override
     public List<RepairModel> searchRepairByDate(LocalDateTime date) {
         return repairJPARepository
-                .findRepairByDate(date)
+                .findByDate(date)
                 .stream()
                 .map(repair -> searchRepairMapper.mapToRepairModel(repair))
                 .collect(Collectors.toList());
     }
+
     @Override
     public List<RepairModel> searchRepairByPlate(String plate) {
         Person person = personJPARepository.findPersonByPlate(plate);

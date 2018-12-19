@@ -118,7 +118,7 @@
                         <td>${searchRepair.status}</td>
                         <td>${searchRepair.person.getFirstName()} ${searchRepair.person.getLastName()}</td>
                         <td>${searchRepair.person.getPlate()}</td>
-                        <td>${searchRepair.person.getAfm()}</td>
+                        <td>${searchRepair.person.getAfm()?c}</td>
                         <td>
                             <a class="btn btn-success" href="/admin/edit_repair/${searchRepair.id}" name="edit" >Edit</a>
                         </td>

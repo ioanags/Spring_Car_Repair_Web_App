@@ -10,8 +10,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class SearchRepairMapper {
-
-
     public RepairModel mapToRepairModel(Repair repair){
         RepairModel repairModel = new RepairModel();
         Person person = new Person();

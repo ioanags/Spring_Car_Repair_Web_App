@@ -12,9 +12,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,24 +70,22 @@ public class SearchController {
         LocalDateTime date = searchRepairForm.getDate();
         String plate = searchRepairForm.getPlate();
 
-        List<RepairModel> repairs = new ArrayList<>();
 
+        List<RepairModel> repairs = new ArrayList<>();
 
         if (afm != null && date == null && plate.isEmpty()) {
             repairs = repairService.searchRepairByAfm(afm);
-            searchRepairForm.setPlate(null);
+
         }else if (!plate.isEmpty() && afm == null && date == null) {
-            repairs = repairService.searchRepairByPlate(plate);
-            searchRepairForm.setAfm(0L);
+           repairs = repairService.searchRepairByPlate(plate);
 
         } else if (date != null && afm == null && plate.isEmpty()) {
-            repairs = repairService.searchRepairByDate(date);
-            searchRepairForm.setAfm(0L);
-            searchRepairForm.setPlate(null);
-        }
-        return repairs;
-//
-        }
+             repairs = repairService.searchRepairByDate(date);
+
+       }
+    return repairs;
+    }
+
 
 
     }
