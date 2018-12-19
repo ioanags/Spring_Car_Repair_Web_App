@@ -16,7 +16,7 @@ public class SearchRepairMapper {
         RepairModel repairModel = new RepairModel();
         Person person = new Person();
         person.setAfm(0L);
-        person.setPlate("");
+        person.setPlate(null);
 
         repairModel.setDate(repair.getDate());
         repairModel.getPerson().setAfm(repair.getPerson().getAfm());
