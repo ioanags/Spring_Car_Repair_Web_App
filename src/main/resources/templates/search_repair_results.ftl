@@ -86,13 +86,12 @@
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2"> Recent Repairs</h1>
 
             </div>
 
 
 
-            <h2>10 First Repairs</h2>
+            <h2>Search Repairs Results</h2>
             <div class="table-responsive">
                 <table class="table table-striped table-sm">
                     <thead>
@@ -118,14 +117,14 @@
                         <td>${searchRepair.cost}</td>
                         <td>${searchRepair.status}</td>
                         <td>${searchRepair.person.getFirstName()} ${searchRepair.person.getLastName()}</td>
-                        <td>${searchRepair.getPlate()}</td>
-                        <td>${searchRepair.getAfm()}</td>
+                        <td>${searchRepair.person.getPlate()}</td>
+                        <td>${searchRepair.person.getAfm()}</td>
                         <td>
-                            <a class="btn btn-success" href="/admin/edit_repair/${repair.id}" name="edit" >Edit</a>
+                            <a class="btn btn-success" href="/admin/edit_repair/${searchRepair.id}" name="edit" >Edit</a>
                         </td>
                         <td>
                             <form action="/admin/delete_repair" name="deleteForm" method="GET">
-                                <input type="hidden" name="id" value="${repair.id}" />
+                                <input type="hidden" name="id" value="${searchRepair.id}" />
                                 <button class="btn btn-danger button-delete-confirmation" onclick="return confirm('Are you sure you want to delete this item?');"  type="submit" name="action" value="Delete">Delete</button>
                             </form>
                         </td>
