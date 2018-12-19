@@ -103,7 +103,7 @@
                     </div>
                     <div class="form-group w-50">
                         <label for="date"><strong>Date</strong></label>
-                        <input  name="date" type="text" class="form-control" id="datetimepicker" value="${date}" placeholder="yyyy-mm-dd">
+                        <input  name="date" type="datetime-local" class="form-control" id="datetimepicker" value="${date}" placeholder="yyyy-mm-dd">
                     </div>
                     <div class="form-group w-50">
                         <label for="kind"><strong>Kind</strong></label>
@@ -151,21 +151,21 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
-<script>
+<#--<script>-->
 
-    (function ($) {
+    <#--(function ($) {-->
 
-        var $inputDatepicker = $('#datetimepicker');
+        <#--var $inputDatepicker = $('#datetimepicker');-->
 
-        if ($inputDatepicker.length > 0) {
-            $inputDatepicker.datetimepicker({
-                format: 'yyyy-mm-dd hh:ii'
-            });
-        }
-    })(jQuery);
+        <#--if ($inputDatepicker.length > 0) {-->
+            <#--$inputDatepicker.datetimepicker({-->
+                <#--format: 'yyyy-mm-dd hh:ii'-->
+            <#--});-->
+        <#--}-->
+    <#--})(jQuery);-->
 
 
 
-</script>
+<#--</script>-->
 </body>
 </html>
