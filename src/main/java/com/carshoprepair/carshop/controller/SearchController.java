@@ -72,15 +72,15 @@ public class SearchController {
 
         if (afm != null && date == null && plate.isEmpty()) {
             repairs = repairService.searchRepairByAfm(afm);
-            searchRepairForm.setPlate("");
+            searchRepairForm.setPlate(null);
         }else if (!plate.isEmpty() && afm == null && date == null) {
             repairs = repairService.searchRepairByPlate(plate);
             searchRepairForm.setAfm(0L);
 
         } else if (date != null && afm == null && plate.isEmpty()) {
             repairs = repairService.searchRepairByDate(date);
-            //searchRepairForm.setAfm(0L);
-            //searchRepairForm.setPlate("");
+            searchRepairForm.setAfm(0L);
+            searchRepairForm.setPlate(null);
         }
         return repairs;
 //
