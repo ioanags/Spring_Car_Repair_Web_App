@@ -63,13 +63,25 @@ public class SearchController {
     @GetMapping("/search/repair")
     private String searchRepair(Model model){
         model.addAttribute("searchRepairForm",new SearchRepairForm());
-                return "search_repair_form";
+
+        //Get Users Lastname
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName(); //get logged in username
+        model.addAttribute("lastname",name);
+
+        return "search_repair_form";
     }
 
     @GetMapping("/search/repair/results")
     public String searchResults(Model model, @ModelAttribute("searchRepairForm") SearchRepairForm searchRepairForm){
         List<RepairModel> repair = searchRepairResults(searchRepairForm);
         model.addAttribute("repairs",repair);
+
+        //Get Users Lastname
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName(); //get logged in username
+        model.addAttribute("lastname",name);
+
         return "search_repair_results";
     }
 

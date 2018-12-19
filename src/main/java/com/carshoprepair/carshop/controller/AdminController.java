@@ -201,6 +201,11 @@ public class AdminController {
         model.addAttribute("personId",repair.getPerson());
         model.addAttribute("repairId",repair.getId());
 
+        //Get Users Lastname
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName(); //get logged in username
+        model.addAttribute("lastname",name);
+
         return "edit_repair";
     }
 
