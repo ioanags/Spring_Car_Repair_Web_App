@@ -140,7 +140,7 @@
                     </#list>
                     </tbody>
                 </table>
-                <a class="nav-link active" href="http://localhost:8081/register">
+                <a class="nav-link active" href="http://localhost:8081/admin/register">
                     <span data-feather="plus-circle"></span>
                     Create user
                 </a>
