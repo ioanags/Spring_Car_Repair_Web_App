@@ -85,33 +85,38 @@ public class RepairServiceImpl implements RepairService {
 
     }
 
-//    @Override
-//    public List<RepairModel> searchRepairByAfm(Long afm){
-//        return repairJPARepository
-//                .findRepairByAfm(afm)
-//                .stream()
-//                .map(repair -> searchRepairMapper.mapToRepairModel(repair))
-//                .collect(Collectors.toList())
-//                .stream()
-//
-//    }
-//
-//    @Override
-//    public List<RepairModel> searchRepairByDate(LocalDateTime date) {
-//        return repairJPARepository
-//                .findRepairByDate(date)
-//                .stream()
-//                .map(repair -> searchRepairMapper.mapToRepairModel(repair))
-//                .collect(Collectors.toList());
-//    }
-//    @Override
-//    public List<RepairModel> searchRepairByPlate(String plate) {
-//        return repairJPARepository
-//                .findRepairByPlate(plate)
-//                .stream()
-//                .map(repair -> searchRepairMapper.mapToRepairModel(repair))
-//                .collect(Collectors.toList());
-//    }
+
+
+
+
+
+    @Override
+    public List<RepairModel> searchRepairByAfm(Long afm){
+        List<Person> person = personJPARepository.findPersonByAfm(afm);
+        return person.get(0).getRepairs()
+                .stream()
+                .map(repair -> searchRepairMapper.mapToRepairModel(repair))
+                .collect(Collectors.toList());
+
+
+    }
+
+    @Override
+    public List<RepairModel> searchRepairByDate(LocalDateTime date) {
+        return repairJPARepository
+                .findRepairByDate(date)
+                .stream()
+                .map(repair -> searchRepairMapper.mapToRepairModel(repair))
+                .collect(Collectors.toList());
+    }
+    @Override
+    public List<RepairModel> searchRepairByPlate(String plate) {
+        Person person = personJPARepository.findPersonByPlate(plate);
+        return person.getRepairs()
+                .stream()
+                .map(repair -> searchRepairMapper.mapToRepairModel(repair))
+                .collect(Collectors.toList());
+    }
 
 
 

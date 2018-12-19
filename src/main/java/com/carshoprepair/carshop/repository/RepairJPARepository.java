@@ -4,6 +4,7 @@ import com.carshoprepair.carshop.domain.Person;
 import com.carshoprepair.carshop.domain.Repair;
 import com.carshoprepair.carshop.models.RepairModel;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import javax.swing.text.html.Option;
@@ -18,8 +19,10 @@ public interface RepairJPARepository extends JpaRepository<Repair,Long> {
     List<Repair> findTop10ByOrderByDateAsc();
 
     Repair findRepairById(long id);
-//    List<Repair> findRepairByPlate(String plate);
-//    List<Repair> findRepairByAfm(Long afm);
-//    List<Repair> findRepairByDate(LocalDateTime date);
-//    List<Repair> findByPerson_id(long id);
+
+   List<Repair> findRepairByDate(LocalDateTime date);
+
+
+
+
 }

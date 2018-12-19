@@ -1,4 +1,6 @@
+<#import "/spring.ftl" as spring />
 <!doctype html>
+
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -74,8 +76,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="/admin/search_repair">
-                            <span data-feather="plus-circle"></span>
+                        <a class="nav-link active" href="/search/repair">
+                            <span data-feather="search"></span>
                             Search Repair
                         </a>
                     </li>
@@ -92,15 +94,17 @@
             <form action="/search/repair/results" name="searchRepairForm" id="searchRepairForm" class="w-50">
                 <div class="form-group">
                     <label for="searchDate">Date or Date's Range:</label>
-                    <input type="text" class="form-control" id="searchDate"  placeholder="Enter Date">
+                    <input type="text" class="form-control" name="date "id="searchDate"  placeholder="Enter Date">
                 </div>
                 <div class="form-group">
-                    <label for="searchAfm">Afm:</label>
-                    <input type="text" class="form-control" id="searchAfm" placeholder="Enter Afm">
+                    <@spring.bind "searchRepairForm.afm"/>
+
+                    <label for="afm">Afm:</label>
+                    <input type="text" class="form-control" name="afm" id="afm" placeholder="Enter Afm">
                 </div>
                 <div class="form-group">
                     <label for="searchPlate">Plate</label>
-                    <input type="text" class="form-control" id="searchPlate" placeholder="Enter Plate">
+                    <input type="text" class="form-control" name="plate"  id="searchPlate" placeholder="Enter Plate">
                 </div>
 
                 <button type="submit" class="btn btn-primary">Search</button>

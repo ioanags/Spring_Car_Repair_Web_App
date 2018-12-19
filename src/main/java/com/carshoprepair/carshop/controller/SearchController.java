@@ -49,36 +49,45 @@ public class SearchController {
         }
         return users;
     }
-//    @GetMapping("/search/repair")
-//    private String searchRepair(Model model){
-//        model.addAttribute("searchRepairForm",new SearchRepairForm());
-//                return "search_repair_form";
-//    }
-//    @GetMapping("/search/repair/results")
-//    public String searchRepair(Model model, @ModelAttribute("searchRepairForm")SearchRepairForm searchRepairForm){
-//        List<RepairModel> repair = searchRepair(searchRepairForm);
-//        model.addAttribute("repairs",repair);
-//        return "search_repair_results";
-//    }
-//    private List<RepairModel> searchRepair(SearchRepairForm searchRepairForm) {
-//        Long afm = searchRepairForm.getAfm();
-//        LocalDateTime date = searchRepairForm.getDate();
-//        String plate = searchRepairForm.getPlate();
-//
-//        List<RepairModel> repairs = new ArrayList<>();
-//        if (afm != null) {
-//            repairs = repairService.searchRepairByAfm(afm);
-//
-//        } else if (!plate.isEmpty()) {
-//            repairs = repairService.searchRepairByPlate(plate);
-//            searchRepairForm.setAfm(0L);
-//        } else if (date != null) {
-//            repairs = repairService.searchRepairByDate(date);
-//            searchRepairForm.setAfm(0L);
-//        }
-//        return repairs;
-//
-//    }
+    @GetMapping("/search/repair")
+    private String searchRepair(Model model){
+        model.addAttribute("searchRepairForm",new SearchRepairForm());
+                return "search_repair_form";
+    }
+
+    @GetMapping("/search/repair/results")
+    public String searchResults(Model model, @ModelAttribute("searchRepairForm") SearchRepairForm searchRepairForm){
+        List<RepairModel> repair = searchRepairResults(searchRepairForm);
+        model.addAttribute("repairs",repair);
+        return "search_repair_results";
+    }
+
+    private List<RepairModel> searchRepairResults(SearchRepairForm searchRepairForm) {
+        Long afm = searchRepairForm.getAfm();
+        LocalDateTime date = searchRepairForm.getDate();
+        String plate = searchRepairForm.getPlate();
+
+        List<RepairModel> repairs = new ArrayList<>();
 
 
-}
+        if (afm != null && date == null && plate.isEmpty()) {
+            repairs = repairService.searchRepairByAfm(afm);
+            searchRepairForm.setPlate("");
+        }else if (!plate.isEmpty() && afm == null && date == null) {
+            repairs = repairService.searchRepairByPlate(plate);
+            searchRepairForm.setAfm(0L);
+
+        } else if (date != null && afm == null && plate.isEmpty()) {
+            repairs = repairService.searchRepairByDate(date);
+            //searchRepairForm.setAfm(0L);
+            //searchRepairForm.setPlate("");
+        }
+        return repairs;
+//
+        }
+
+
+    }
+
+
+

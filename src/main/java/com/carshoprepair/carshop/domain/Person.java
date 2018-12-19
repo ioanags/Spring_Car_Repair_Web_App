@@ -59,6 +59,14 @@ public class Person {
 
     }
 
+    public List<Repair> getRepairs() {
+        return repairs;
+    }
+
+    public void setRepairs(List<Repair> repairs) {
+        this.repairs = repairs;
+    }
+
     public Long getId() {
         return id;
     }

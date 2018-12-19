@@ -12,8 +12,7 @@ import java.util.Optional;
 @Component
 public class RepairToRepairModelMapper {
 
-    @Autowired
-    private PersonServiceImpl personService;
+
 
     public RepairModel mapToRepairModel(Repair repair){
         RepairModel repairModel = new RepairModel();
